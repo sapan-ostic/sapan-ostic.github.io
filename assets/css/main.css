@@ -1171,8 +1171,8 @@ pre.highlight code,
 }
 
 .content-box {
-  padding: 30px;
-  padding-left: 430px;
+  padding: 50px;
+  padding-left: 450px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
