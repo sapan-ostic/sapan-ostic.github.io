@@ -972,9 +972,9 @@ table tfoot td {
 .about .author-name {
   font-family: 'PT Serif', serif;
   text-align: center;
-  margin: 0 0 10px;
+  margin: 0 0 0px;
   position: initial;
-  padding-bottom: 15px;
+  padding-bottom: 0 px;
   font-size: 26px;
   text-transform: uppercase;
   color: #333030;
