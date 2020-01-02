@@ -17,15 +17,15 @@ layout: main
     <div class="wrap-content">
       <header class="header-page">
         <h1 class="page-title">{{page.title}}</h1>
-        <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <!-- <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div> -->
+      </header>
+      {{content | markdownify}}
+      <div class="page-footer">
         <div class="page-tag">
           {% for tag in page.tags %}
             <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
           {% endfor %}
         </div>
-      </header>
-      {{content | markdownify}}
-      <div class="page-footer">
       </div>
       {% include disqus.html %}
     </div> <!-- End Wrap Content -->
