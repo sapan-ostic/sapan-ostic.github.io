@@ -1307,7 +1307,7 @@ footer .copyright {
 }
 
 .post .post-thumbnail {
-  width: 35%;
+  width: 50%;
   max-width: 100%;
   min-height: 11rem;
   -webkit-background-size: cover;
