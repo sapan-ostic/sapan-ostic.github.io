@@ -884,7 +884,7 @@ table tfoot td {
 }
 
 .wrapper {
-  max-width: 1500px;
+  max-width: 1250px;
   position: relative;
 }
 
@@ -1159,6 +1159,7 @@ footer .copyright {
   margin: 0 0 10px;
   font-size: 30px;
   font-weight: 400;
+  text-align: left;
 }
 
 .post .post-content .post-title a {
@@ -1168,6 +1169,7 @@ footer .copyright {
 }
 
 .post .post-content p {
+  text-align: justify;
   margin-top: 0;
 }
 
