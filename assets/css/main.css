@@ -6,12 +6,12 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
-html {
-  line-height: 1.15;
+ html {
+  /* line-height: 1.15; */
   /* 1 */
   -ms-text-size-adjust: 100%;
   /* 2 */
-  -webkit-text-size-adjust: 100%;
+  /* -webkit-text-size-adjust: 100%; */
   /* 2 */
 }
 
@@ -930,22 +930,21 @@ table tfoot td {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 100px;
+  width: 400px;
   height: 100%;
   padding: 20px 10px;
   background-color: #ffffff;
 }
 
 .about {
-  /* 60 */
   margin: 0 0 60px; 
   text-align: center;
 }
 
 .about .cover-author-image {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 10px;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
   -webkit-border-radius: 100%;
           border-radius: 100%;
   overflow: hidden;
@@ -972,12 +971,12 @@ table tfoot td {
 .about .author-name {
   font-family: 'PT Serif', serif;
   margin: 0 0 10px;
-  position: relative;
+  position: initial;
   padding-bottom: 15px;
-  font-size: 16px;
+  font-size: 22px;
   text-transform: uppercase;
   color: #333030;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .about .author-name::after {
@@ -990,7 +989,7 @@ table tfoot td {
   bottom: 0;
   display: block;
   width: 7px;
-  height: 7px;
+  height: 17px;
   -webkit-border-radius: 100%;
           border-radius: 100%;
   background-color: #515151;
@@ -1003,7 +1002,7 @@ table tfoot td {
 
 .content-box {
   padding: 20px;
-  padding-left: 260px;
+  padding-left: 420px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1026,7 +1025,7 @@ table tfoot td {
   position: relative;
   color: #333030;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 16px;
   margin: 0 0 5px;
   text-transform: uppercase;
   text-align: center;
@@ -1037,7 +1036,7 @@ table tfoot td {
   display: block;
   height: 2px;
   width: -webkit-calc(50% - 48px);
-  width: calc(50% - 48px);
+  width: calc(50% - 60px);
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -1052,7 +1051,7 @@ table tfoot td {
   display: block;
   height: 2px;
   width: -webkit-calc(50% - 48px);
-  width: calc(50% - 48px);
+  width: calc(50% - 60px);
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -1082,7 +1081,7 @@ table tfoot td {
   color: #515151;
   display: block;
   padding: 5px;
-  font-size: 18px;
+  font-size: 24px;
   -webkit-transition: all 350ms cubic-bezier(0.13, 0.43, 0.54, 1.82);
   -o-transition: all 350ms cubic-bezier(0.13, 0.43, 0.54, 1.82);
   transition: all 350ms cubic-bezier(0.13, 0.43, 0.54, 1.82);
@@ -1090,9 +1089,9 @@ table tfoot td {
 
 .contact ul li a:hover {
   color: #333030;
-  -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-transform: scale(1.4);
+      -ms-transform: scale(1.4);
+          transform: scale(1.4);
 }
 
 footer .copyright {
@@ -1138,7 +1137,7 @@ footer .copyright {
 }
 
 .post .post-thumbnail {
-  width: 30%;
+  width: 35%;
   max-width: 100%;
   min-height: 11rem;
   -webkit-background-size: cover;
