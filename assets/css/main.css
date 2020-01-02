@@ -997,6 +997,80 @@ table tfoot td {
   background-color: #515151;
 }
 
+.panel-cover__divider {
+	width: 50%;
+	margin: 20px auto;
+	border-top: 1px solid rgba(255, 255, 255, 0.14); }
+
+.cover-navigation {
+  margin-top: 10px;
+} 
+
+.nav{
+  display: inline-block;
+  position: relative;
+}
+
+.navigation{
+  display: inline-block;
+  float: left;
+  position: relative;
+  margin: 0px;
+  list-style-type: none;
+}
+
+pre.highlight,
+.highlight pre {
+  padding: 10px;
+}
+
+pre.highlight code,
+.highlight pre code {
+  white-space: pre-wrap;
+}
+
+.btn, 
+.navigation__item a {
+  margin: 5px 0;
+  white-space: nowrap;
+}
+
+.pagination__page-number {
+  display: inline-block;
+  padding: 10px;
+}
+
+.categories a,
+.tags a {
+  border: 1px solid #e25440;
+  border-radius: 20px;
+  color: #e25440;
+  display: inline-block;
+  font-size: 12px;
+  margin: 5px 0;
+  padding: 5px 10px;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.post-meta__tags {
+  font-size: 12px;
+  padding: 0 5px;
+}
+
+.footer__copyright {
+    margin: 0 20px 10px;
+}
+
+.user-image {
+  margin-bottom: 1.2em;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 3px solid #fff;
+  border-radius:100%;
+}
+
 .about p {
   font-size: 16px;
   margin: 0 0 10px;
