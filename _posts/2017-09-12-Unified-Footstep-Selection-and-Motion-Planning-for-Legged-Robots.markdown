@@ -3,7 +3,7 @@ layout: post
 title: Unified Footstep Selection and Motion Planning for Legged Robots 
 date: 2017-09-12 13:32:20 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
-img: 1.jpg # Add image post (optional)
+img: 1.gif # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [Legged Robots, Motion Planning, Model Predictive Control]
 ---
