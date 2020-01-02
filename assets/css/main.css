@@ -937,7 +937,7 @@ table tfoot td {
 }
 
 .about {
-  margin: 0 0 60px; 
+  margin: 0 0 0px; 
   text-align: justify;
   padding: 10px 20px 10px;
 }
@@ -975,10 +975,11 @@ table tfoot td {
   margin: 0 0 10px;
   position: initial;
   padding-bottom: 15px;
-  font-size: 22px;
+  font-size: 26px;
   text-transform: uppercase;
   color: #333030;
   font-weight: 400;
+  letter-spacing: 4px;
 }
 
 .about .author-name::after {
@@ -1018,18 +1019,35 @@ table tfoot td {
 
 nav {
 	display: inline-block;
-	position: relative; }
+	position: relative;
+  }
+  
+
+.navigation-wrapper{
+  padding-left : 10px;
+  display: block;  
+}
 
 .navigation__item {
 	display: inline-block;
 	margin: 0 2px 0 0;
-  line-height: 1em; }
+	line-height: 1em; }
+	.navigation__item a {
+		display: block;
+		position: relative;
+		border-color: #FFF;
+		color: #FFF;
+		opacity: .8; }
+		.navigation__item a:hover {
+			color: #FFF;
+			border-color: #FFF;
+			opacity: 1; }
   
 .navigation__item a {
   display: block;
   position: relative;
   border-color: #FFF;
-  color: #FFF;
+  color: #ffffff00;
   opacity: .8; }
 
 .navigation__item a:hover {
@@ -1056,17 +1074,17 @@ pre.highlight code,
 
 .btn, .navigation__item a {
 	padding: 10px 20px;
-	border: 1px solid #e25440;
+	border: 1px solid #000000;
 	border-radius: 20px;
 	font-size: .9em;
 	font-weight: bold;
 	letter-spacing: 1px;
 	text-shadow: none;
-	color: #e25440;
+	color: #000000;
 	-webkit-font-smoothing: antialiased; }
 	.btn:hover, .navigation__item a:hover {
-		color: #b9301c;
-    border-color: #b9301c; }
+		color: #4b88bd;
+    border-color: #4b88bd; }
 
 .btn-secondary {
   border-color: #5ba4e5;
