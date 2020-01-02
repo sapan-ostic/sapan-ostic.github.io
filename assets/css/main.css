@@ -930,14 +930,15 @@ table tfoot td {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 240px;
+  width: 2400px;
   height: 100%;
   padding: 20px 10px;
   background-color: #ffffff;
 }
 
 .about {
-  margin: 0 0 200px;
+  /* 60 */
+  margin: 0 0 200px; 
   text-align: center;
 }
 
