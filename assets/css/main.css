@@ -999,14 +999,14 @@ table tfoot td {
 }
 
 .panel-cover__divider {
-	width: 50%;
-	margin: 20px auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.14); }
+	width: 100%;
+	margin: 6px auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
   
 .panel-cover__divider_post {
   width: 20%;
   margin: 20px auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.14); }  
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }  
 
 .cover-navigation {
   margin-top: 10px;
