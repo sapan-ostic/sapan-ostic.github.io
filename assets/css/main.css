@@ -1016,6 +1016,27 @@ table tfoot td {
   position: relative;
 }
 
+nav {
+	display: inline-block;
+	position: relative; }
+
+.navigation__item {
+	display: inline-block;
+	margin: 0 2px 0 0;
+  line-height: 1em; }
+  
+.navigation__item a {
+  display: block;
+  position: relative;
+  border-color: #FFF;
+  color: #FFF;
+  opacity: .8; }
+
+.navigation__item a:hover {
+  color: #FFF;
+  border-color: #FFF;
+  opacity: 1; }
+
 .navigation{
   display: inline-block;
   position: relative;
