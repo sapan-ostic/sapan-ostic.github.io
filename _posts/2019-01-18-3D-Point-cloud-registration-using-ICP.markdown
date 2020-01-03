@@ -10,5 +10,5 @@ Applications varying from medical robotics as to mine tunnel profiling require r
  
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/icp.gif">
-     <figcaption align="center"> MTM subjected to external disturbance with high stifness in XY Plane of end-effector's motion resulting in hybrid Force-motion control of the robot. </figcaption>
+     <figcaption align="center"> Registering measured (Red) point cloud set with template (Green). </figcaption>
 </p>
