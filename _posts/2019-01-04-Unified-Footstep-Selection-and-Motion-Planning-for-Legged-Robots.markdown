@@ -11,12 +11,5 @@ To address the problem of dynamic footstep planning for legged robots, we develo
 
 ![]({{site.baseurl}}/assets/img/4.gif)
 
-blah blah
+>Unified Foothold Section and Motion Planning for Legged Systems in Real-Time C. Steven, Sapan Agrawal, Matthew Travers, IEEE-RAS International Conference on Humanoid Robots, 2019. 
 
->Paper citation.
-Bullets here:
-
-* Hexagon shoreditch beard
-* Intelligentsia narwhal austin
-* Literally meditation four
-* Microdosing hoodie woke
