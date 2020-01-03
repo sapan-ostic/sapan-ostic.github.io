@@ -773,6 +773,8 @@ html {
 }
 
 body {
+  text-align: justify;
+  font-size: large;
   font-family: 'Lato', sans-serif;
   color: #515151;
   background-color: #fbfbfb;
