@@ -18,5 +18,5 @@ To address the problem of dynamic footstep planning for legged robots, we develo
 
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/flyped.gif">
-     <figcaption> Hardware implementation done by Abhimanyu and Steven    </figcaption>
+     <figcaption align="center"> Hardware implementation done by Abhimanyu and Steven    </figcaption>
 </p>
