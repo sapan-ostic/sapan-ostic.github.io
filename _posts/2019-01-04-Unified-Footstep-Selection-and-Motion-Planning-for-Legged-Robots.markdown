@@ -3,7 +3,7 @@ layout: post
 title: Unified Footstep Selection and Motion Planning for Legged Robots 
 date: 2019-01-04 13:32:20 +0300
 description: Developed an iterative optimization method that plans in real-time over a receding horizon to address the problem of dynamic footstep planning for legged robot. # Add post description (optional)
-img: flyped.gif # Add image post (optional)
+img: 4.gif # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [Legged Robots, Motion Planning, Model Predictive Control, MATLAB]
 ---
