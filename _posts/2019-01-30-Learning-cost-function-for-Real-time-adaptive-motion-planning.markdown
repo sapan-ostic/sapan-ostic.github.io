@@ -7,7 +7,9 @@ img:  ramp.gif # Add image post (optional)
 ---
 Real time Path Planning algorithms find the optimal path by choosing trajectories with minimum cost. In majority of these cases, energy, time, Euclidean distance of the robot from the goal position are constituted in the Cost function. This work aims at developing a generalised approach to find the cost function using Deep Learning. 
 
-![]({{site.baseurl}}/assets/img/ramp.gif)
+<p align="center">
+    <img src="{{site.baseurl}}/assets/img/ramp.gif">
+</p>
 
 ```
 This work is being carried out at Advanced Intelligent and Robotics (AIR) Lab, WPI under the guidance of Prof. Jing Xiao. 
