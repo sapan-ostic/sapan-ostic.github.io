@@ -13,4 +13,4 @@ Robots   have   long   been   used   in   the   operation theaters  primarily  f
      <figcaption align="center"> MTM subjected to external disturbance with high stifness in XY Plane of end-effector's motion resulting in hybrid Force-motion control of the robot. </figcaption>
 </p>
 
->Design of an impedance controller for da Vinci MTM. T. Farid, **Sapan Agrawal**, P. Kartik, H.Y. Simon, Z. Tianyu, G. Fischer, Worcester Polytechnic Institute RBE 501 Robot Dynamics Course Project [[Report]]({{site.baseurl}}/assets/img/icp.gifassets/pdf/Design_of_Impedence_controller_for_the_da_Vinci_MTM.pdf).
+>Design of an impedance controller for da Vinci MTM. T. Farid, **Sapan Agrawal**, P. Kartik, H.Y. Simon, Z. Tianyu, G. Fischer, Worcester Polytechnic Institute RBE 501 Robot Dynamics Course Project [[Report]]({{site.baseurl}}/assets/img/assets/pdf/Design_of_Impedence_controller_for_the_da_Vinci_MTM.pdf).
