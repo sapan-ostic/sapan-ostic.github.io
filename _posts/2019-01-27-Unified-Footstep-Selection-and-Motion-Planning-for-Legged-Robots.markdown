@@ -14,9 +14,9 @@ To address the problem of dynamic footstep planning for legged robots, we develo
      <figcaption align="center"> Foothold optimization conforming to terrain cost map using gradientdescent of local polynomials. </figcaption>
 </p>
 
->Unified Foothold Section and Motion Planning for Legged Systems in Real-Time C. Steven, **Sapan Agrawal**, Matthew Travers, IEEE-RAS International Conference on Humanoid Robots, 2019 [[Paper]](https://1drv.ms/b/s!Ap3y6sk8HvoliN4v6QGtT5WlKmnFwQ). 
-
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/flyped.gif">
-     <figcaption align="center"> Hardware implementation done by Abhimanyu and Steven    </figcaption>
+     <figcaption align="center"> Hardware implementation done by Abhimanyu and Steven Crews </figcaption>
 </p>
+
+>Unified Foothold Section and Motion Planning for Legged Systems in Real-Time C. Steven, **Sapan Agrawal**, Matthew Travers, IEEE-RAS International Conference on Humanoid Robots, 2019 [[Paper]](https://1drv.ms/b/s!Ap3y6sk8HvoliN4v6QGtT5WlKmnFwQ). 
