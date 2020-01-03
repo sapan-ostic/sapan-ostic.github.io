@@ -2,7 +2,7 @@
 layout: post
 title: Learning cost function for real time adaptive motion planning
 date: 2019-01-01 13:32:20 +0300
-description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+description: Real time Path Planning algorithms find the optimal path by choosing trajectories with minimum cost. In majority of these cases, energy, time, Euclidean distance of the robot from the goal position are constituted in the Cost function. This works aims at developing a generalised approach to find the cost function using Deep Learning.  
 img:  1.gif # Add image post (optional)
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
