@@ -10,5 +10,5 @@ Applications varying from medical robotics as to mine tunnel profiling require r
  
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/icp.gif">
-     <figcaption align="center"> Registering measured (Red) point cloud set with template (Green). </figcaption>
+     <figcaption align="center"> Registering measured (Red) point cloud set with the template (Green). </figcaption>
 </p>
