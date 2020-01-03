@@ -13,3 +13,4 @@ To address the problem of dynamic footstep planning for legged robots, we develo
 
 >Unified Foothold Section and Motion Planning for Legged Systems in Real-Time C. Steven, Sapan Agrawal, Matthew Travers, IEEE-RAS International Conference on Humanoid Robots, 2019. 
 
+
