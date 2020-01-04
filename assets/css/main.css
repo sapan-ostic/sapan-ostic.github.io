@@ -1591,7 +1591,7 @@ a.newer-posts:hover {
     margin-bottom: 10px;
   }
   .about {
-    text-align: center;
+    text-align: justify;
     max-width: 480px;
     margin: 10px auto auto;
   }
