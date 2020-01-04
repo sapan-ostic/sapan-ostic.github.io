@@ -1028,8 +1028,9 @@ nav {
   
 
 .navigation-wrapper{
-  padding-left : 20px;
-  display: block;  
+  padding-left : 0px;
+  display: block; 
+  padding-inline-start: 0px; 
 }
 
 .navigation__item {
