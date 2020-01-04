@@ -1023,14 +1023,15 @@ table tfoot td {
 
 nav {
 	display: inline-block;
-	position: relative;
+  position: relative;
+  margin-left: -40px;
   }
   
 
 .navigation-wrapper{
   padding-left : 0px;
   display: block; 
-  padding-inline-start: 0px; 
+  text-align: center;
 }
 
 .navigation__item {
