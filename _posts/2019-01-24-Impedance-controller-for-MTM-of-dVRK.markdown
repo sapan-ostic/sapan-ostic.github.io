@@ -4,7 +4,7 @@ title: Impedance controller for MTM of dVRK
 date: 2019-01-24 00:00:00 +0300
 description: This  work  presents  the dynamics  modeling  and  design  of  an  impedance  controller  for the  Master  Tool  Manipulator(MTM) of  the  da  Vinci  Robot Kit(dVRK) in  a  simulated  environment. 
 img: mtm_ambf.gif # Add image post (optional)
-tags: [Controls, Python, AMBF Simulator, RBDL] # add tag
+tags: [Controls, Python, AMBF Simulator, RBDL, ROS] # add tag
 ---
 Robots   have   long   been   used   in   the   operation theaters  primarily  for  a  wide  variety  of  applications  ranging from  neurosurgery  to  laparoscopic  surgery.  This  demands  aregulated force control between the manipulator and the tissues in  which  the  robot  interacts.  Although  the  da  Vinci  Surgical Robot  has  risen  as  a  pioneering  tool  in  the  field  of  minimally invasive  surgery,  the  platform  lacks  a  controller  that  governs the  interaction  of  the  robot’s  end  effector  with  its  surrounding environment  in  a  compliant  manner.  This  work  presents  thedynamics  modeling  and  design  of  an  impedance  controller  for the  Master  Tool  Manipulator  of  the  da  Vinci  robot  in  a  simulated  environment.
 
