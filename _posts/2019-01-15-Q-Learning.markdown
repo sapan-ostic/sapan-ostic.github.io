@@ -12,7 +12,7 @@ Following were homeworks for my CS-525 Reinforcement Learning Course at WPI.
 The model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards.   
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/breakout.gif" width="40%">
-     <figcaption align="right"> [[Code]](https://github.com/sapan-ostic/CS-525-Reinforcement-Learning/tree/master/HW%203%20DQN%20Atari%20Games) </figcaption>
+     <figcaption align="right">  </figcaption>
 </p>
 
 
