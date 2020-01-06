@@ -13,10 +13,12 @@ The model is a convolutional neural network, trained with a variant of Q-learnin
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/breakout.gif">
 </p>
-
+[[Code]](https://github.com/sapan-ostic/CS-525-Reinforcement-Learning/tree/master/HW%203%20DQN%20Atari%20Games)
 
 ### Go-To-Goal Grid world problem using Q Learning
 Given a static map of START, GOAL and location of obstacles, the agent learns the best path to the goal from any initial position.
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/qlearning.gif">
 </p>
+
+[[Code]](https://github.com/sapan-ostic/Go-to-goal-grid-problem-using-q-learning)
