@@ -13,5 +13,5 @@ Real time Path Planning algorithms find the optimal path by choosing trajectorie
 </p>
 
 ```
-This work is being carried out at Adaptive and Intelligent and Robotics (AIR) Lab, WPI under the guidance of Prof. Jing Xiao. 
+This work is being carried out at Adaptive and Intelligent Robotics (AIR) Lab, WPI under the guidance of Prof. Jing Xiao. 
 ```
