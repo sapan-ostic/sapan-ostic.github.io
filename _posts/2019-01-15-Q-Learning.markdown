@@ -4,7 +4,7 @@ title: Q Learning
 date: 2019-01-15 13:32:20 +0300
 description: Playing Breakout Atari game using DQN and Go-to-goal Grid world problem using Q Learning.       
 img:  combined.gif # Add image post (optional)
-tags: [Deep Reinforcement Learning, Gym Open AI, Python]
+tags: [Deep Reinforcement Learning, Gym OpenAI, Python]
 ---
 
 Following were homeworks for my CS-525 Reinforcement Learning Course at WPI.
