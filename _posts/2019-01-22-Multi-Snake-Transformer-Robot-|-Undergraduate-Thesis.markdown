@@ -20,11 +20,6 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 </style>
 <body>
 
-<div class="w3-container">
-  <h2>Slideshow Indicators</h2>
-  <p>An example of using buttons to indicate how many slides there are in the slideshow, and which slide the user is currently viewing.</p>
-</div>
-
 <div class="w3-content w3-display-container" style="max-width:800px">
   <img class="mySlides" src="/assets/img/msmr/design1.png" style="width:100%">
   <img class="mySlides" src="/assets/img/msmr/design2.png" style="width:100%">
