@@ -13,7 +13,7 @@ layout: main
     <!-- <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span> -->
     <!-- <span class="post-words"> <a href="">[PDF]</a></span> -->
     {% if post.paper %}
-      <span class="post-words"> <a href="{{post.paper_url | prepend: site.baseurl}}">[Paper]</a></span>
+      <span class="post-words"> <a href="{{post.paper | prepend: site.baseurl}}">[Paper]</a></span>
     {% endif %}
 
     {% if post.report %}
