@@ -17,7 +17,7 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
     <figcaption align="center"> Quadrupedal robot formed using four snake robots.</figcaption>
 </p>
 
-## Design of Snake Robots
+## Snake Robots
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif">
     <figcaption align="center"> Rolling Gait of snake robot</figcaption>
@@ -25,7 +25,7 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 
 
 ## Snake Gaits
-<p align="center">
+<!-- <p align="center">
     <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif">
     <figcaption align="center"> Rolling Gait of snake robot</figcaption>
 </p>
@@ -33,5 +33,5 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif">
     <figcaption align="center"> Quadrupedal robot formed using four snake robots.</figcaption>
-</p>
+</p> -->
 
