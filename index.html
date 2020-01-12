@@ -13,23 +13,23 @@ layout: main
     <!-- <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span> -->
     <!-- <span class="post-words"> <a href="">[PDF]</a></span> -->
     {% if post.paper %}
-      <span class="post-words"> <a href="{{post.paper | prepend: site.baseurl}}">[Paper]</a></span>
+      <span class="post-words"> <a href="{{post.paper | prepend: site.baseurl}}" style="text-decoration: none;">[Paper]</a></span>
     {% endif %}
 
     {% if post.report %}
-      <span class="post-words"> <a href="{{post.report_url | prepend: site.baseurl}}">[Report]</a></span>
+      <span class="post-words"> <a href="{{post.report_url | prepend: site.baseurl}}" style="text-decoration: none;">[Report]</a></span>
     {% endif %}
 
     {% if post.video %}
-      <span class="post-words"> <a href="{{post.video_url}}">[Video]</a></span>
+      <span class="post-words"> <a href="{{post.video_url}}" style="text-decoration: none;">[Video]</a></span>
     {% endif %}
 
     {% if post.poster %}
-      <span class="post-words"> <a href="{{post.poster_url | prepend: site.baseurl}}">[Poster]</a></span>
+      <span class="post-words"> <a href="{{post.poster_url | prepend: site.baseurl}}" style="text-decoration: none;">[Poster]</a></span>
     {% endif %}
 
     {% if post.code %}
-      <span class="post-words"> <a href="{{post.code_url}}">[Code]</a></span>
+      <span class="post-words"> <a href="{{post.code_url}}" style="text-decoration: none;">[Code]</a></span>
     {% endif %}
 
   </div>
