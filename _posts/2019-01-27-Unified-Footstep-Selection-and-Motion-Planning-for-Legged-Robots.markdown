@@ -6,6 +6,7 @@ description: To address the problem of dynamic footstep planning for legged robo
 img: flyped.gif # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [Motion Planning, Controls, MATLAB, ROS, GAZEBO, C++]
+paper: /assets/pdf/humanoids.pdf
 ---
 To address the problem of dynamic footstep planning for legged robots, we developed an iterative optimization method that plans in real-time over a receding horizon. We provided analytical solution to linearization of event-based discrete hybrid dynamics, allowing superior accuracy with lower computation and time complexity compared to numerical differentiation. Besides this, we established new method to incorporate terrain as soft-state constraint into the iLQR formulation.
 

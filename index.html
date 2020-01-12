@@ -11,7 +11,23 @@ layout: main
     <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
     <p>{{post.description}}</p>
     <!-- <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span> -->
-    <!-- <span class="post-words"> "sdad" </span> -->
+    <!-- <span class="post-words"> <a href="">[PDF]</a></span> -->
+    {% if post.paper %}
+      <span class="post-words"> <a href="{{post.paper_url | prepend: site.baseurl}}">[Paper]</a></span>
+    {% endif %}
+
+    {% if post.report %}
+      <span class="post-words"> <a href="{{post.report_url | prepend: site.baseurl}}">[Report]</a></span>
+    {% endif %}
+
+    {% if post.video %}
+      <span class="post-words"> <a href="{{post.video_url}}">[Video]</a></span>
+    {% endif %}
+
+    {% if post.poster %}
+      <span class="post-words"> <a href="{{post.poster_url | prepend: site.baseurl}}">[Poster]</a></span>
+    {% endif %}
+
   </div>
 </article>
 {% endfor %}
