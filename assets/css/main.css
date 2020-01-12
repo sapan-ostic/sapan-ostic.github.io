@@ -1352,6 +1352,7 @@ footer .copyright {
 
 .post .post-content p {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 a.older-posts, a.newer-posts {
