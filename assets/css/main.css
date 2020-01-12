@@ -1329,7 +1329,8 @@ footer .copyright {
 
 .post .post-content .post-date,
 .post .post-content .post-words {
-  font-size: 12px;
+  font-size: 18px;
+  text-decoration: none;
 }
 
 .post .post-content .post-title {

@@ -28,6 +28,10 @@ layout: main
       <span class="post-words"> <a href="{{post.poster_url | prepend: site.baseurl}}">[Poster]</a></span>
     {% endif %}
 
+    {% if post.code %}
+      <span class="post-words"> <a href="{{post.code_url}}">[Code]</a></span>
+    {% endif %}
+
   </div>
 </article>
 {% endfor %}
