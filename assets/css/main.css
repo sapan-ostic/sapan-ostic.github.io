@@ -1342,6 +1342,7 @@ footer .copyright {
   margin: 0 0 0px;
   font-size: 28px;
   font-weight: 400;
+  text-align: left;
 }
 
 .post .post-content .post-title a {
