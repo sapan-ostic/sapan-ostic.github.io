@@ -1330,12 +1330,10 @@ footer .copyright {
 .post .post-content .post-date,
 .post .post-content .post-words {
   font-size: 18px;
-  /* text-decoration: none; */
-  color: #1772d0;
 }
 
 .post .post-content .post-words a {
-  color: #107dac;  
+  color: #1050a9;  
 }
 
 .post .post-content .post-title {
@@ -1353,7 +1351,7 @@ footer .copyright {
 
 .post .post-content p {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 1;
 }
 
 a.older-posts, a.newer-posts {
