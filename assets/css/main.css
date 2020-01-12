@@ -1334,6 +1334,10 @@ footer .copyright {
   color: #1772d0;
 }
 
+.post .post-content .post-words a {
+  color: #107dac;  
+}
+
 .post .post-content .post-title {
   margin: 0 0 0px;
   font-size: 28px;
