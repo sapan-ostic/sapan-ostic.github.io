@@ -19,7 +19,7 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 
 ## Snake Robot 
 <p align="center">
-    <img src="{{site.baseurl}}/assets/img/msmr/design.gif">
+    <img src="{{site.baseurl}}/assets/img/msmr/design.gif" style="height: 300px;">
     <figcaption align="center"> Prototype design and fabricated Snake Robot </figcaption>
 </p>
 
