@@ -21,7 +21,7 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 <body>
 
 <div class="w3-content w3-display-container" style="max-width:800px">
-  <img class="mySlides" src="/assets/img/msmr/design1.png" style="height:300px">
+  <img class="mySlides" src="/assets/img/msmr/design1.png" style="height:300px; padding-left:36%;">
   <img class="mySlides" src="/assets/img/msmr/design2.png" style="height:300px">
   <img class="mySlides" src="/assets/img/msmr/design3.png" style="height:300px  ">
   <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
