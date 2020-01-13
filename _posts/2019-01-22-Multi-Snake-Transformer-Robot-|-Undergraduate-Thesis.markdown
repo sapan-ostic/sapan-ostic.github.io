@@ -45,7 +45,7 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 </p>
 
 <p align="center">
-    <img src="{{site.baseurl}}/assets/img/msmr/pitch_control.gif" style="height: 300px;">
+    <img src="{{site.baseurl}}/assets/img/msmr/pitch_control.gif" style="height: 350px;">
     <figcaption align="center"> Pitch Control of the Snake Robot</figcaption>
 </p>
 
