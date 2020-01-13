@@ -42,7 +42,7 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
   </div>
   <div class="column">
     <img src="{{site.baseurl}}/assets/img/msmr/rotating.gif" style="height: 300px;">
-    <figcaption align="center"> Rolling Gait</figcaption>
+    <figcaption align="center"> Rotating Gait</figcaption>
   </div>
   <div class="column">
     <img src="{{site.baseurl}}/assets/img/msmr/pitch_control.gif" style="height: 350px;">
