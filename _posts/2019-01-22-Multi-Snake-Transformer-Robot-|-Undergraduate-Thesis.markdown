@@ -34,7 +34,23 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 <h2 id="snake-gaits" style="margin-bottom: 0px;">Snake Gaits</h2>
 <hr class="panel-cover__divider" style="margin-top: 0px;">
 
-<p align="center">
+
+<div class="row">
+  <div class="column">
+    <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif" style="height: 300px;">
+    <figcaption align="center"> Rolling Gait</figcaption>
+  </div>
+  <div class="column">
+    <img src="{{site.baseurl}}/assets/img/msmr/rotating.gif" style="height: 300px;">
+    <figcaption align="center"> Rolling Gait</figcaption>
+  </div>
+  <div class="column">
+    <img src="{{site.baseurl}}/assets/img/msmr/pitch_control.gif" style="height: 350px;">
+    <figcaption align="center"> Pitch Control of the Snake Robot</figcaption>
+  </div>
+</div>
+
+<!-- <p align="center">
     <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif" style="height: 300px;">
     <figcaption align="center"> Rolling Gait</figcaption>
 </p>
@@ -47,5 +63,5 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/msmr/pitch_control.gif" style="height: 350px;">
     <figcaption align="center"> Pitch Control of the Snake Robot</figcaption>
-</p>
+</p> -->
 
