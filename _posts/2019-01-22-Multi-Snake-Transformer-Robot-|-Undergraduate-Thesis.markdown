@@ -17,7 +17,7 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 .mySlides {display:none}
-.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-left, .w3-right, .w3-badge {cursor:pointer; color: #585858;}
 .w3-badge {height:13px;width:13px;padding:0}
 </style>
 <body>
