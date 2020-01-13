@@ -23,15 +23,25 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
     <figcaption align="center"> Prototype design and fabricated Snake Robot </figcaption>
 </p>
 
+<p align="center">
+    <img src="{{site.baseurl}}/assets/img/msmr/snakeCyber.jpg" style="height: 300px;">
+    <figcaption align="center"> Cyber-physical Architecture </figcaption>
+</p>
+
 
 ## Snake Gaits
-<!-- <p align="center">
-    <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif">
-    <figcaption align="center"> Rolling Gait of snake robot</figcaption>
+<p align="center">
+    <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif" style="height: 300px;">
+    <figcaption align="center"> Rolling Gait</figcaption>
 </p>
 
 <p align="center">
-    <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif">
-    <figcaption align="center"> Quadrupedal robot formed using four snake robots.</figcaption>
-</p> -->
+    <img src="{{site.baseurl}}/assets/img/msmr/rotating.gif" style="height: 300px;">
+    <figcaption align="center"> Rolling Gait</figcaption>
+</p>
+
+<p align="center">
+    <img src="{{site.baseurl}}/assets/img/msmr/pitch_control.gif" style="height: 300px;">
+    <figcaption align="center"> Pitch Control of the Snake Robot</figcaption>
+</p>
 
