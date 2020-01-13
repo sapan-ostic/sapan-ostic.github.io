@@ -45,7 +45,7 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
     <figcaption align="center"> Rotating Gait</figcaption>
   </div>
   <div class="column">
-    <img src="{{site.baseurl}}/assets/img/msmr/pitch_control.gif" style="height: 350px;">
+    <img src="{{site.baseurl}}/assets/img/msmr/pitch_control.gif" style="height: 300px;">
     <figcaption align="center"> Pitch Control of the Snake Robot</figcaption>
   </div>
 </div>
