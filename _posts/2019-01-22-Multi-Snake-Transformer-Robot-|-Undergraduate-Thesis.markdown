@@ -31,7 +31,9 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
 </p>
 
 
-## Snake Gaits
+<h2 id="snake-gaits" style="margin-bottom: 0px;">Snake Gaits</h2>
+<hr class="panel-cover__divider" style="margin-top: 0px;">
+
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/msmr/rolling_good.gif" style="height: 300px;">
     <figcaption align="center"> Rolling Gait</figcaption>
