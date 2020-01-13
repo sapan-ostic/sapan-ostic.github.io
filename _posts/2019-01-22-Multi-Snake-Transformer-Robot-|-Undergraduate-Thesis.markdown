@@ -17,8 +17,9 @@ Operations in search and rescue requires self-reconfigurable robotics systems to
     <figcaption align="center"> Quadrupedal robot formed using four snake robots.</figcaption>
 </p>
 
-## Snake Robot 
-<hr class="panel-cover__divider">
+<h2 id="snake-robot" style="margin-bottom: 0px;">Snake Robot</h2>
+<hr class="panel-cover__divider" style="margin-top: 0px;">
+
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/msmr/design.gif" style="height: 300px;">
     <figcaption align="center"> Prototype design and fabricated Snake Robot </figcaption>
