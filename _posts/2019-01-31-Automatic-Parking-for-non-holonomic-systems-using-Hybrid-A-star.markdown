@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Automatic Parking System for non holonomic systems using Hybrid A*
-date: 2019-01-33 13:32:20 +0300
-description:
+title: Automatic Parking for non holonomic systems using Hybrid A star
+date: 2019-01-31 13:32:20 +0300
+description: Implementing Hybrid A* in Gazebo for Automatic Parking task. 
 
 img:  astar.gif # Add image post (optional)
 tags: [Motion Planning, C++]

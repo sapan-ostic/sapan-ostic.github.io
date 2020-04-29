@@ -2,9 +2,7 @@
 layout: post
 title: Controls for Personalization of Autonomous driving system in CARLA Simulator
 date: 2019-01-31 13:32:20 +0300
-description: 
-Our goal is to develop a driver-in-the-loop framework to enable studying and testing of the personalized assisted driving systems.
-
+description: Our goal is to develop a driver-in-the-loop framework to enable studying and testing of the personalized assisted driving systems.
 img:  argoverse.png # Add image post (optional)
 tags: [Motion Planning, Controls, Python]
 ---

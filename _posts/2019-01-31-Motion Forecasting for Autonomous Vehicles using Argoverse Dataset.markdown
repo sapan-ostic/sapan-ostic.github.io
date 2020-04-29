@@ -3,7 +3,6 @@ layout: post
 title: Motion Forecasting for Autonomous Vehicles using Argoverse Dataset
 date: 2019-01-31 13:32:20 +0300
 description: Predicting socially plausible future trajectories of the target vehicles in the environment using combination of Seq2Seq Prediction and GANs.
-
 img:  argoverse.png # Add image post (optional)
 tags: [Motion Planning, Deep Learning, Python]
 ---
