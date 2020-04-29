@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Learning cost function for real time adaptive motion planning
-date: 2019-01-30 13:32:20 +0300
+date: 2019-01-29 13:32:20 +0300
 description: Real time Path Planning algorithms find the optimal path by choosing trajectories with minimum cost. This works aims at developing a generalised approach to find the cost function using Deep Learning.  
 img:  ramp.gif # Add image post (optional)
 tags: [Motion Planning, Deep Reinforcement Learning, ROS, GAZEBO, C++]
