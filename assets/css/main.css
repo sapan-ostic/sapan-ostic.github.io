@@ -888,7 +888,7 @@ table tfoot td {
 .wrapper {
   max-width: 1700px;
   position: relative;
-  zoom: 80%;
+  zoom: 70%;
 }
 
 .post, .article-page {
