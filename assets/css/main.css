@@ -1338,7 +1338,7 @@ footer .copyright {
 
 .post .post-content .post-title {
   margin: 0 0 0px;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 400;
   text-align: left;
 }
@@ -1352,6 +1352,7 @@ footer .copyright {
 .post .post-content p {
   margin-top: 0;
   margin-bottom: 1;
+  font-size: 16px;
 }
 
 a.older-posts, a.newer-posts {
