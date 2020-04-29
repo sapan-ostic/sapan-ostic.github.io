@@ -19,4 +19,5 @@ In this project, I was responsible for implementing and testing various controll
 
 <p align="center">
     <img src="{{site.baseurl}}/assets/img/mpc_carla.gif">
+    <figcaption align="center"> Model Predictive Control for Autonomous Vehicle in Carla Simulator </figcaption>
 </p>
