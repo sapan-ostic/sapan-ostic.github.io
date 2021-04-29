@@ -336,30 +336,10 @@
             <img class="images no-border" src="Sapan_Agrawal_files/ramp.gif">
           </div>
 
-<!--           <div class="row">
-            <div class="column">
-              <img src="Sapan_Agrawal_files/ramp_sensing.gif" alt="Snow" style="width:100%">
-            </div>
-            <div class="column">
-              <img src="Sapan_Agrawal_files/ramp_rl.gif" alt="Forest" style="width:100%">
-            </div>
-            <div class="column">
-              <img src="Sapan_Agrawal_files/ramp_pedsim_parallel.gif" alt="Mountains" style="width:100%">
-            </div>
-          </div>  -->
-
-          <!-- <div class="wsite-youtube" style="margin-bottom:10px;margin-top:10px;">
-            <div class="wsite-youtube-wrapper wsite-youtube-size-auto wsite-youtube-align-center">
-              <div class="wsite-youtube-container">
-                <iframe src="https://youtu.be/7bdS_xpYz7A" allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0"></iframe>
-              </div>
-            </div>
-          </div>   -->
-          (left: Dynamic obstacle detection, center and right: navigation using ramp with simulated pedestrians)
+          (left: Dynamic obstacle detection, center and right: navigation using RAMP with simulated pedestrians)
           <br>
-            <span class="bullet-points">Social Robot Navigation:</span> Real-time Adaptive Motion Planning (RAMP) is genetic algorithm based framework for planning and execution of non-holonomic robot trajectories in an environment with dynamic and obstacles. The cost function used for evaluating the trajectories in the population is a weighted combination of multiple optimization criteria such as time, energy, safety and social behavior. However a single set of parameters in the social force model fails to adapt to the changing and unseen environment. To tackle this problem, we use LSTM-DQN to self-adapt the SFM parameters in social robot navigation. For training purpose, we simulate the pedestrian motion using the <a href="https://github.com/srl-freiburg/pedsim_ros" target="_blank">pedsim</a> environment. 
+            <span class="bullet-points">Social Robot Navigation:</span> <a target="_blank" href="https://github.com/sterlingm/ramp">Real-time Adaptive Motion Planning (RAMP)</a> is genetic algorithm based framework for planning and execution of non-holonomic robot trajectories in an environment with dynamic and obstacles. The cost function used for evaluating the trajectories in the population is a weighted combination of multiple optimization criteria such as time, energy, safety and social behavior. However a single set of parameters in the Social Force Model(SFM) fails to adapt to the changing and unseen environment. To tackle this problem, we use LSTM-DQN to self-adapt the SFM parameters in social robot navigation. For training purpose, we simulate the pedestrian motion using the <a href="https://github.com/srl-freiburg/pedsim_ros" target="_blank">pedsim</a> environment. 
         </div>
-
     </div>
 
   <div class="hr-line"></div>
