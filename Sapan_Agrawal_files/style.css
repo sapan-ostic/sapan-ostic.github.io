@@ -1250,8 +1250,8 @@ a.color-black:hover{
 
 .wsite-youtube-container {
  position:relative;
- padding-bottom:56.25% !important;
- padding-top:30px;
+ padding-bottom:46.25% !important;
+ padding-top:0px;
  height:0;
  overflow:hidden
 }
