@@ -322,7 +322,7 @@
   <!-- WPI Safe Robot Navigation -->
     <div>
 
-    <h5>Adaptive & Intelligent Robotics Lab, WPI(<a href="https://wp.wpi.edu/airlab/home/" target="_blank">AIRL</a>)</h5>
+    <h5><a href="https://wp.wpi.edu/airlab/home/" target="_blank">Adaptive & Intelligent Robotics Lab, WPI</a></h5>
 
   </div>
   <div class="hentry remove-bottom">
@@ -355,9 +355,9 @@
               </div>
             </div>
           </div>   -->
-          (Image courtesy by <a href="https://www.kiss.caltech.edu/lectures/2019_EELS.html" target="_blank">Keck Institue for Space Studies - Caltech</a>)
+          (left: Dynamic obstacle detection, center and right: navigation using ramp with simulated pedestrians)
           <br>
-          Given the robot's kinematic model, contact locations and state-action constraints, find the optimal contact force that the robot should apply on the crevasse to enable stable motion against the plume forces. To solve this problem, I worked with Robotic Aerial Mobility (347T): <a href="https://www.youtube.com/watch?v=7bdS_xpYz7A" target="_blank">Exobiology Extant Life Surveyor (EELS)</a> software team in developing grasping based new planning & control framework for snake robot climbing in crevasse for Enceladus exploration <a href="https://www.youtube.com/watch?v=7bdS_xpYz7A" target="_blank"> [EELS Concept Video]</a>.
+            <span class="bullet-points">Social Robot Navigation:</span> Real-time Adaptive Motion Planning (RAMP) is genetic algorithm based framework for planning and execution of non-holonomic robot trajectories in an environment with dynamic and obstacles. The cost function used for evaluating the trajectories in the population is a weighted combination of multiple optimization criteria such as time, energy, safety and social behavior. However a single set of parameters in the social force model fails to adapt to the changing and unseen environment. To tackle this problem, we use LSTM-DQN to self-adapt the SFM parameters in social robot navigation. For training purpose, we simulate the pedestrian motion using the <a href="https://github.com/srl-freiburg/pedsim_ros" target="_blank">pedsim</a> environment. 
         </div>
 
     </div>
