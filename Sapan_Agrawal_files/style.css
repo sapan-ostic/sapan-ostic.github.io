@@ -1306,7 +1306,7 @@ img:click {
 .column {
   float: left;
   width: 33.33%;
-  padding: 5px;
+  padding: 0px;
 }
 
 /* Clearfix (clear floats) */
