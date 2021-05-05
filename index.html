@@ -503,14 +503,11 @@
       <!-- </div>  -->
 
       <div class="exp-desc" style="width:100%">
-       	Given the observed/past 3 sec trajectory of the target vehicle, the goal is to efficiently predict the traffic actor's motion for next 2 sec in future using the available environment features. To tackle this problem of motion forecasting, we implemented the <a target="_blank" href="https://arxiv.org/abs/1803.10892">Social GANs</a> on the <a target="_blank" href="https://www.argoverse.org/data.html#forecasting-link">Argoverse Motion Forecasting Dataset</a>. We compared the GANs based approach with baseline methods: Seq2Seq prediction and Social LSTM achieving upto 5x better prediction accuracy on the test data.   
-
-        <br> 
+       	Given the goal location in an unknown environment, plan a collision free path while mapping the environment in real-time. To tackle this problem, I created a custom ROS navigation stack in C++. I used <a href="http://wiki.ros.org/costmap_2d" target="_blank">costmap_2d</a> package for creating a occupancy map from a Hokuyo laser scan. The Occupancy grid is then subscribed by the Planner (implemented A* and Hybrid A*) generating the collision free path. Finally, a simple PID controller tracks the robot along the planned path.
       </div>
 
       <div>
-        <span class="paper padding-right-20"> <a href="Sapan_Agrawal_files/Motion_Forecasting_for_Autonomous_Vehicles_using_Argoverse_Dataset.pdf" target="_blank" class="paper">[Project Report]</a></span>
-        <span class="code padding-right-20"> <a href="https://github.com/sapan-ostic/deep_prediction" target="_blank" class="code">[Code]</a></span>
+        <span class="code padding-right-20"> <a href="https://github.com/Sanjeeev-K/Hybrid_Astar" target="_blank" class="code">[Code]</a></span>
       </div>
 
       <div class="hr-line-projects"></div>
