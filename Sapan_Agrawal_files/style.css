@@ -431,7 +431,7 @@ a:hover img, #slider-nav li a:hover img { opacity: 0.85; }
 .hentry img, .entry-content img, .widget img {
   height: auto;
   padding: 1px;
-  border: 1px solid #e5e5e5;
+  border: 10px solid #ffffff;
 }
 .rss-button { margin-bottom: 25px; }
 iframe.video { border:0; }
@@ -1305,7 +1305,7 @@ img:click {
 } */
 .column {
   float: left;
-  width: 33.33%;
+  width: 50%;
   padding: 0px;
 }
 
