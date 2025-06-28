@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Markov Decision Processes through an interactive grid world demonstration featuring value iteration and policy visualization.">
+  
+  <!-- Page Title -->
+  <title>MDP Grid World: Interactive Reinforcement Learning Demo - Sapan Agrawal's Blog</title>
+  
+  <!-- Favicon -->
+  <link href="../../../images/profile/01_sapan_agrawal.jpg" rel="shortcut icon" type="image/x-icon"/>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="../../../css/fontawesome-v4-font-face.css" rel="stylesheet" type="text/css"/>
+  <link href="../../../css/fontawesome-v4-shims.css" rel="stylesheet" type="text/css"/>
+  <link href="../../../css/fontawesome-main.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/css/independent-blog.css" rel="stylesheet" type="text/css"/>
+  
+  <!-- Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  
+  <!-- MathJax for Mathematical Notation -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://sapan-ostic.github.io/blog/posts/rl-ai/mdp-grid-world-visualization.html"/>
+  <meta property="og:title" content="MDP Grid World: Interactive Reinforcement Learning Demo"/>
+  <meta property="og:description" content="Explore Markov Decision Processes through an interactive grid world demonstration featuring value iteration and policy visualization."/>
+  <meta property="og:image" content="https://sapan-ostic.github.io/images/contents/01_sapan_agrawal.jpg"/>
+</head>
+
+<body>
+  <!-- Navigation Header -->
+  <header class="blog-nav-header">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="../../" class="brand-link">
+          <img src="../../../images/profile/01_sapan_agrawal.jpg" alt="Sapan Agrawal" class="brand-avatar">
+          <span class="brand-text">Sapan Agrawal</span>
+        </a>
+      </div>
+      
+      <nav class="nav-menu">
+        <a href="../../" class="nav-link">Blog</a>
+        <a href="../../../" class="nav-link">About Me</a>
+        <div class="nav-social">
+          <a href="https://github.com/sapan-ostic" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/sapanostic/" target="_blank" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/sapan-ostic" target="_blank" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="mailto:ssagrawal@wpi.edu" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="blog-main">
+    
+    <!-- Article Header -->
+    <article class="blog-post">
+      <header class="post-header">
+        <div class="narrow-container">
+          <!-- Breadcrumb -->
+          <nav class="breadcrumb">
+            <a href="../../">Blog</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="../../categories/rl-ai.html">Reinforcement Learning & AI</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">MDP Grid World Visualization</span>
+          </nav>
+          
+          <div class="post-meta">
+            <span class="post-category rl-ai">Reinforcement Learning & AI</span>
+            <time class="post-date">January 15, 2024</time>
+            <span class="post-read-time">8 min read</span>
+          </div>
+          
+          <h1 class="post-title">Markov Decision Processes: Interactive Grid World Visualization</h1>
+          
+          <p class="post-excerpt">
+            Explore the fundamentals of Markov Decision Processes through an interactive grid world demonstration featuring value iteration, policy visualization, and real-time algorithm analysis.
+          </p>
+          
+          <div class="post-author">
+            <img src="../../../images/profile/01_sapan_agrawal.jpg" alt="Sapan Agrawal" class="author-avatar">
+            <div class="author-info">
+              <span class="author-name">Sapan Agrawal</span>
+              <span class="author-title">Robotics MS Student at WPI</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Post Content -->
+      <section class="post-content">
+        <div class="narrow-container">
+          
+          <!-- Interactive Demo Embed -->
+          <div class="demo-embed" id="demo-embed">
+            <div class="demo-header">
+              <div class="demo-title">
+                <i class="fas fa-play-circle"></i>
+                Interactive MDP Grid World Demo
+              </div>
+              <div class="demo-controls">
+                <button class="demo-control-btn" id="maximize-demo">
+                  <i class="fas fa-expand"></i>
+                  <span>Maximize</span>
+                </button>
+              </div>
+            </div>
+            <div class="demo-body">
+              <iframe src="../../../mdp_grid_world.html" title="MDP Grid World Interactive Demo" id="demo-iframe"></iframe>
+            </div>
+          </div>
+
+          <p>
+            Markov Decision Processes (MDPs) form the mathematical foundation of reinforcement learning, providing a framework for modeling decision-making in situations where outcomes are partly random and partly under the control of a decision maker. Today, I'll walk you through the core concepts using an interactive grid world demonstration that I've built.
+          </p>
+
+          <h2>What are Markov Decision Processes?</h2>
+          
+          <p>
+            An MDP is defined by a tuple $(S, A, P, R, \gamma)$ where:
+          </p>
+          
+          <ul>
+            <li><strong>$S$</strong>: A finite set of states</li>
+            <li><strong>$A$</strong>: A finite set of actions</li>
+            <li><strong>$P$</strong>: State transition probabilities $P(s'|s,a)$</li>
+            <li><strong>$R$</strong>: Reward function $R(s,a,s')$</li>
+            <li><strong>$\gamma$</strong>: Discount factor $\gamma \in [0,1]$</li>
+          </ul>
+
+          <p>
+            The goal in an MDP is to find an optimal policy $\pi^*$ that maximizes the expected cumulative discounted reward. This is where value iteration comes into play.
+          </p>
+
+          <h2>Value Iteration Algorithm</h2>
+          
+          <p>
+            Value iteration is a dynamic programming algorithm that computes the optimal value function by iteratively applying the Bellman equation:
+          </p>
+          
+          $$V_{k+1}(s) = \max_a \sum_{s'} P(s'|s,a)[R(s,a,s') + \gamma V_k(s')]$$
+          
+          <p>
+            The algorithm continues until convergence, typically when the maximum change in value function between iterations falls below a threshold $\theta$.
+          </p>
+
+          <h2>Interactive Grid World Demonstration</h2>
+          
+          <p>
+            I've created an interactive visualization that demonstrates these concepts in action. The grid world environment allows you to:
+          </p>
+          
+          <ul>
+            <li>Modify grid layout and obstacles</li>
+            <li>Adjust reward structures</li>
+            <li>Observe value iteration convergence in real-time</li>
+            <li>Visualize optimal policies through arrow overlays</li>
+            <li>Analyze convergence statistics and performance metrics</li>
+          </ul>
+
+          <h2>Key Implementation Details</h2>
+          
+          <p>
+            The demonstration is built using vanilla JavaScript and HTML5 Canvas for optimal performance. Here are some interesting implementation aspects:
+          </p>
+
+          <h3>State Representation</h3>
+          
+          <p>
+            Each cell in the grid represents a state, with special states including:
+          </p>
+          
+          <pre><code class="language-javascript">
+const StateType = {
+  EMPTY: 0,
+  OBSTACLE: 1,
+  GOAL: 2,
+  PENALTY: 3,
+  START: 4
+};
+
+class GridState {
+  constructor(x, y, type = StateType.EMPTY) {
+    this.x = x;
+    this.y = y;
+    this.type = type;
+    this.value = 0;
+    this.policy = null;
+  }
+}
+          </code></pre>
+
+          <h3>Value Iteration Implementation</h3>
+          
+          <p>
+            The core value iteration loop efficiently updates all states:
+          </p>
+          
+          <pre><code class="language-javascript">
+function valueIteration(grid, gamma = 0.9, theta = 0.001) {
+  let delta = Infinity;
+  let iterations = 0;
+  
+  while (delta > theta && iterations < 1000) {
+    delta = 0;
+    
+    for (let state of grid.getAllStates()) {
+      if (state.type === StateType.OBSTACLE) continue;
+      
+      const oldValue = state.value;
+      const actionValues = [];
+      
+      for (let action of ACTIONS) {
+        const nextStates = getNextStates(state, action);
+        const expectedValue = nextStates.reduce((sum, {state: nextState, prob}) => {
+          const reward = getReward(state, action, nextState);
+          return sum + prob * (reward + gamma * nextState.value);
+        }, 0);
+        
+        actionValues.push({action, value: expectedValue});
+      }
+      
+      const bestAction = actionValues.reduce((best, current) => 
+        current.value > best.value ? current : best
+      );
+      
+      state.value = bestAction.value;
+      state.policy = bestAction.action;
+      
+      delta = Math.max(delta, Math.abs(oldValue - state.value));
+    }
+    
+    iterations++;
+  }
+  
+  return {converged: delta <= theta, iterations};
+}
+          </code></pre>
+
+          <h2>Exploring Different Scenarios</h2>
+          
+          <p>
+            The interactive demo allows you to experiment with various scenarios:
+          </p>
+
+          <h3>1. Classic Grid World</h3>
+          <p>A simple 4x4 grid with a goal state and penalty states, demonstrating basic navigation.</p>
+
+          <h3>2. Obstacle Navigation</h3>
+          <p>Complex environments with barriers that require the agent to find alternative paths.</p>
+
+          <h3>3. Multi-Goal Environments</h3>
+          <p>Scenarios with multiple rewards of different magnitudes, showcasing how the discount factor affects decision-making.</p>
+
+          <h2>Educational Insights</h2>
+          
+          <p>
+            Through this visualization, several key reinforcement learning concepts become apparent:
+          </p>
+
+          <blockquote>
+            <strong>Discount Factor Impact:</strong> Lower γ values make the agent more myopic, focusing on immediate rewards, while higher values encourage long-term planning.
+          </blockquote>
+
+          <blockquote>
+            <strong>Convergence Behavior:</strong> Value iteration typically converges quickly in simple environments but may require more iterations in complex scenarios with many states.
+          </blockquote>
+
+          <blockquote>
+            <strong>Policy Stability:</strong> Often, the optimal policy stabilizes before the value function fully converges, which is why policy iteration can sometimes be more efficient.
+          </blockquote>
+
+          <h2>Extensions and Future Work</h2>
+          
+          <p>
+            This basic grid world can be extended in several interesting directions:
+          </p>
+          
+          <ul>
+            <li><strong>Stochastic Transitions:</strong> Adding uncertainty to action outcomes</li>
+            <li><strong>Temporal Difference Learning:</strong> Implementing Q-learning and SARSA</li>
+            <li><strong>Function Approximation:</strong> Using neural networks for large state spaces</li>
+            <li><strong>Continuous Spaces:</strong> Extending to continuous state and action spaces</li>
+          </ul>
+
+          <h2>Conclusion</h2>
+          
+          <p>
+            Markov Decision Processes provide a powerful framework for sequential decision-making under uncertainty. The interactive grid world demonstration helps build intuition about how value iteration works and how different parameters affect the learning process. 
+          </p>
+          
+          <p>
+            I encourage you to experiment with the demo above and observe how changing the environment structure, rewards, and algorithm parameters affects the resulting optimal policy. Understanding these fundamentals is crucial for tackling more complex reinforcement learning problems in robotics, game playing, and autonomous systems.
+          </p>
+
+          <p>
+            <em>Have questions or want to discuss further? Feel free to reach out via <a href="mailto:ssagrawal@wpi.edu">email</a> or connect with me on <a href="https://www.linkedin.com/in/sapanostic/" target="_blank">LinkedIn</a>.</em>
+          </p>
+          
+        </div>
+      </section>
+      
+      <!-- Social Sharing -->
+      <section class="post-sharing">
+        <div class="narrow-container">
+          <h3 class="sharing-title">Share this post</h3>
+          <div class="sharing-buttons">
+            <a href="#" class="share-btn twitter" data-platform="twitter">
+              <i class="fab fa-twitter"></i>
+              Twitter
+            </a>
+            <a href="#" class="share-btn linkedin" data-platform="linkedin">
+              <i class="fab fa-linkedin-in"></i>
+              LinkedIn
+            </a>
+            <a href="#" class="share-btn facebook" data-platform="facebook">
+              <i class="fab fa-facebook-f"></i>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </section>
+      
+    </article>
+
+  </main>
+
+  <!-- Fullscreen Modal for MDP Demo -->
+  <div class="fullscreen-modal" id="fullscreen-modal">
+    <div class="fullscreen-header">
+      <h2 class="fullscreen-title">MDP Value Iteration: Interactive Grid World</h2>
+      <button id="minimize-demo" class="demo-control-btn">
+        <i class="fas fa-compress"></i>
+        <span>Minimize</span>
+      </button>
+    </div>
+    <div class="fullscreen-content">
+      <iframe 
+        src="../../../mdp_grid_world.html" 
+        class="fullscreen-iframe"
+        id="fullscreen-iframe"
+        title="MDP Grid World Interactive Demo - Fullscreen"
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="blog-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Sapan Agrawal</h3>
+          <p>Robotics MS student at WPI, exploring the intersection of AI, planning, and control systems.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="../../categories/rl-ai.html">Reinforcement Learning & AI</a></li>
+            <li><a href="../../categories/travel.html">Travel</a></li>
+            <li><a href="../../categories/food.html">Food</a></li>
+            <li><a href="../../categories/life.html">Life</a></li>
+            <li><a href="../../categories/everything-else.html">Everything Else</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="../../../">Portfolio</a></li>
+            <li><a href="mailto:ssagrawal@wpi.edu">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/sapanostic/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/sapan-ostic" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Subscribe</h4>
+          <p>Get notified when I publish new posts</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Sapan Agrawal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../assets/js/independent-blog.js"></script>
+  <script>
+    // Initialize syntax highlighting
+    hljs.highlightAll();
+    
+    // Demo maximize/minimize functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const maximizeBtn = document.getElementById('maximize-demo');
+      const minimizeBtn = document.getElementById('minimize-demo');
+      const fullscreenModal = document.getElementById('fullscreen-modal');
+      
+      // Maximize demo event listener
+      if (maximizeBtn) {
+        maximizeBtn.addEventListener('click', () => {
+          openFullscreenDemo();
+        });
+      }
+      
+      // Minimize demo event listener
+      if (minimizeBtn) {
+        minimizeBtn.addEventListener('click', () => {
+          closeFullscreenDemo();
+        });
+      }
+      
+      // Close modal on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && fullscreenModal && fullscreenModal.classList.contains('active')) {
+          closeFullscreenDemo();
+        }
+      });
+      
+      // Close modal when clicking on background
+      if (fullscreenModal) {
+        fullscreenModal.addEventListener('click', (e) => {
+          if (e.target === fullscreenModal) {
+            closeFullscreenDemo();
+          }
+        });
+      }
+      
+      function openFullscreenDemo() {
+        if (fullscreenModal) {
+          fullscreenModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          
+          // Analytics tracking
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'demo_maximize', {
+              'event_category': 'engagement',
+              'event_label': 'mdp_grid_world'
+            });
+          }
+        }
+      }
+      
+      function closeFullscreenDemo() {
+        if (fullscreenModal) {
+          fullscreenModal.classList.remove('active');
+          document.body.style.overflow = '';
+          
+          // Analytics tracking
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'demo_minimize', {
+              'event_category': 'engagement',
+              'event_label': 'mdp_grid_world'
+            });
+          }
+        }
+      }
+    });
+    
+    // Social sharing functionality
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.share-btn')) {
+        e.preventDefault();
+        const platform = e.target.closest('.share-btn').dataset.platform;
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent('Markov Decision Processes: Interactive Grid World Visualization');
+        
+        const shareUrls = {
+          twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
+          linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
+        };
+        
+        if (shareUrls[platform]) {
+          window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

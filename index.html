@@ -244,6 +244,12 @@
           CV
          </a>
         </li>
+        <li class="menu-item blog">
+         <a class="spec" href="blog/">
+          Blog
+         </a>
+        </li>
+
         <!-- <br>
               <li class="menu-item talks">
                 
@@ -266,9 +272,7 @@
           Prof. Jing Xiao
          </a>
          for extending genetic algorithm based motion planning framework
-         <a href="https://github.com/sterlingm/ramp" target="_blank">
-          RAMP
-         </a>
+         <strong>RAMP</strong>
          for social robot navigation by integrating the Social Force Model into cost function optimization using Reinforcement Learning.
          <br/>
          Prior to my graduate studies, I spent a year as a Visiting Research Scholar in
@@ -592,9 +596,7 @@
          <span class="bullet-points">
           Social Robot Navigation:
          </span>
-         <a href="https://github.com/sterlingm/ramp" target="_blank">
-          Real-time Adaptive Motion Planning (RAMP)
-         </a>
+         <strong>Real-time Adaptive Motion Planning (RAMP)</strong>
          is genetic algorithm based framework for planning and execution of non-holonomic robot trajectories in an environment with dynamic and obstacles. The cost function used for evaluating the trajectories in the population is a weighted combination of multiple optimization criteria such as time, energy, safety and social behavior. However a single set of parameters in the Social Force Model(SFM) fails to adapt to the changing and unseen environment. To tackle this problem, we use LSTM-DQN to self-adapt the SFM parameters in social robot navigation. For training purpose, we simulate the pedestrian motion using the
          <a href="https://github.com/srl-freiburg/pedsim_ros" target="_blank">
           pedsim
@@ -1118,10 +1120,13 @@
                   </li>
                  </ul>
                 </div>
-                <!-- </div> -->
-                <!-- </div></div></div></div> -->
-                <!-- </div> -->
-                <!-- #content -->
+               </div>
+
+               
+               <!-- </div> -->
+               <!-- </div></div></div></div> -->
+               <!-- </div> -->
+               <!-- #content -->
                 <!-- </div> -->
                 <!-- #main -->
                 <!-- <div class="clear"></div> -->
@@ -1149,19 +1154,22 @@
               </script>
               <script type="text/javascript">
                $(document).ready(function () {
-    $('.toc').toc({
-      title: '',
-      listType: 'ol',
-      minimumHeaders: 2,
-      headers: 'h2, h3, h4, h5, h6',
-      linkHere: true,
-      linkHereTitle: 'Link here',
-      backToTop: true,
-      backToTopId: 'toc',
-      backToTopTitle: 'Back to Table of Contents',
-    });
-    $('.jekyll-toc-header a.jekyll-toc-link-here span.jekyll-toc-icon').addClass('icon icon-link');
-    $('.jekyll-toc-header a.jekyll-toc-back-to-top span.jekyll-toc-icon').addClass('icon icon-chevron-up');
+    // Only initialize TOC if .toc elements exist
+    if ($('.toc').length > 0) {
+      $('.toc').toc({
+        title: '',
+        listType: 'ol',
+        minimumHeaders: 2,
+        headers: 'h2, h3, h4, h5, h6',
+        linkHere: true,
+        linkHereTitle: 'Link here',
+        backToTop: true,
+        backToTopId: 'toc',
+        backToTopTitle: 'Back to Table of Contents',
+      });
+      $('.jekyll-toc-header a.jekyll-toc-link-here span.jekyll-toc-icon').addClass('icon icon-link');
+      $('.jekyll-toc-header a.jekyll-toc-back-to-top span.jekyll-toc-icon').addClass('icon icon-chevron-up');
+    }
   });
               </script>
              </div>

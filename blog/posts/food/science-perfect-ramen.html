@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- Basic Meta Tags -->
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Applying engineering principles to understand the physics and chemistry behind the perfect bowl of ramen." name="description"/>
+  
+  <!-- Page Title -->
+  <title>The Science of Perfect Ramen: Temperature, Timing, and Texture - Sapan Agrawal</title>
+  
+  <!-- Favicon -->
+  <link href="../../../images/profile/01_sapan_agrawal.jpg" rel="shortcut icon" type="image/x-icon"/>
+  
+  <!-- CSS Stylesheets -->
+  <link href="../../../css/style.css" rel="stylesheet" type="text/css"/>
+  <link href="../../../css/css.css" id="font-bitter-css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../../../css/academicons.css" rel="stylesheet"/>
+  <link href="../../../css/fontawesome-v4-font-face.css" rel="stylesheet" type="text/css"/>
+  <link href="../../../css/fontawesome-v4-shims.css" rel="stylesheet" type="text/css"/>
+  <link href="../../../css/fontawesome-main.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/css/blog.css" rel="stylesheet" type="text/css"/>
+  
+  <!-- MathJax for Mathematical Notation -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+</head>
+
+<body class="blogs">
+  <div id="container">
+    <div class="wrap">
+      <!-- Header -->
+      <div class="sticky-header" id="header">
+        <div id="branding">
+          <h1 id="site-title">
+            <a href="https://sapan-ostic.github.io/" rel="Home" title="Sapan Agrawal">
+              Sapan Agrawal
+            </a>
+          </h1>
+          <a class="social-icons" href="https://github.com/sapan-ostic" target="_blank">
+            <i aria-hidden="true" class="fab fa-github"></i>
+          </a>
+          <a class="social-icons" href="https://www.linkedin.com/in/sapanostic/" target="_blank">
+            <i aria-hidden="true" class="fab fa-linkedin-in"></i>
+          </a>
+          <a class="social-icons" href="https://twitter.com/sapan-ostic" target="_blank">
+            <i aria-hidden="true" class="fab fa-twitter"></i>
+          </a>
+          <a class="social-icons" href="https://www.facebook.com/sapanostic/" target="_blank">
+            <i aria-hidden="true" class="fab fa-facebook-f"></i>
+          </a>
+          <a class="social-icons" href="mailto:ssagrawal@wpi.edu" target="_blank">
+            <i aria-hidden="true" class="fas fa-envelope"></i>
+          </a>
+          <a class="social-icons" href="https://scholar.google.com/citations?user=GTnljpcAAAAJ&hl=en" target="_blank">
+            <i class="ai ai-google-scholar"></i>
+          </a>
+        </div>
+        
+        <!-- Navigation Menu -->
+        <div class="menu-container" id="menu-primary">
+          <div class="menu">
+            <ul id="menu-primary-items">
+              <li class="menu-item projects">
+                <a class="spec" href="../../../#projects">Projects</a>
+              </li>
+              <li class="menu-item publications">
+                <a class="spec" href="../../../#publications">Publications</a>
+              </li>
+              <li class="menu-item experience">
+                <a class="spec" href="../../../#experience">Experience</a>
+              </li>
+              <li class="menu-item cv">
+                <a class="spec" href="../../../documents/cv/Resume_Sapan_Agrawal.pdf" target="_blank">CV</a>
+              </li>
+              <li class="menu-item blogs">
+                <a class="spec" href="../../">Blogs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div id="main">
+        <div id="content">
+          <div class="blog-post-container">
+            
+            <!-- Breadcrumb Navigation -->
+            <nav class="blog-breadcrumb">
+              <ul class="breadcrumb-list">
+                <li><a href="../../../">Home</a></li>
+                <li>></li>
+                <li><a href="../../">Blog</a></li>
+                <li>></li>
+                <li><a href="../../categories/food.html">Food</a></li>
+                <li>></li>
+                <li>Science of Ramen</li>
+              </ul>
+            </nav>
+
+            <!-- Blog Post Header -->
+            <header class="blog-post-header">
+              <div class="blog-card-category">Food</div>
+              <h1 class="blog-post-title">The Science of Perfect Ramen: Temperature, Timing, and Texture</h1>
+              <div class="blog-post-meta">
+                <div class="blog-card-date">
+                  <i class="fas fa-calendar-alt"></i>
+                  January 1, 2024 • 5 min read
+                </div>
+                <div class="blog-card-tags">
+                  <span class="blog-tag">Food Science</span>
+                  <span class="blog-tag">Ramen</span>
+                  <span class="blog-tag">Chemistry</span>
+                  <span class="blog-tag">Physics</span>
+                </div>
+              </div>
+            </header>
+
+            <!-- Blog Post Content -->
+            <article class="blog-post-content">
+              
+              <p>
+                As an engineer who spends most days thinking about control systems and optimization algorithms, I've found an unexpected parallel in the art of ramen preparation. The perfect bowl of ramen is essentially a complex engineering problem involving heat transfer, fluid dynamics, and chemical reactions—all optimized for maximum flavor and texture.
+              </p>
+
+              <h2>The Physics of Noodle Texture</h2>
+              
+              <p>
+                The texture of ramen noodles depends on a fascinating interplay of polymer science and thermodynamics. When wheat flour proteins (gluten) are mixed with water and kansui (alkaline mineral water), they form a viscoelastic network that determines the noodle's final characteristics.
+              </p>
+
+              <h3>Elasticity and Viscosity Modeling</h3>
+              
+              <p>
+                The ideal ramen noodle exhibits what food scientists call "perfect chewiness"—technically, this is a specific balance between elastic and viscous properties. We can model this using the Maxwell model for viscoelastic materials:
+              </p>
+              
+              $$\sigma + \lambda\frac{d\sigma}{dt} = \mu\frac{d\gamma}{dt}$$
+              
+              <p>
+                Where $\sigma$ is stress, $\gamma$ is strain, $\lambda$ is relaxation time, and $\mu$ is viscosity. The optimal ramen texture occurs when the relaxation time matches the typical chewing frequency (~2-3 Hz).
+              </p>
+
+              <h2>Heat Transfer Optimization</h2>
+              
+              <p>
+                Cooking ramen noodles is fundamentally a heat and mass transfer problem. The goal is to achieve uniform gelatinization of starch throughout the noodle while maintaining structural integrity.
+              </p>
+
+              <h3>The Cooking Algorithm</h3>
+              
+              <p>
+                Based on Fourier's law of heat conduction, the temperature distribution in a cylindrical noodle follows:
+              </p>
+              
+              $$\frac{\partial T}{\partial t} = \alpha \nabla^2 T$$
+              
+              <p>
+                Where $\alpha$ is thermal diffusivity. For optimal texture, we want the center temperature to reach 85-90°C (starch gelatinization point) without overcooking the exterior.
+              </p>
+
+              <blockquote>
+                The key insight: cooking time scales with the square of noodle thickness, explaining why fresh ramen shops meticulously control noodle diameter.
+              </blockquote>
+
+              <h2>Broth Dynamics: Emulsification Science</h2>
+              
+              <p>
+                A proper tonkotsu (pork bone) broth represents one of the most complex emulsification challenges in cooking. The creamy, opaque appearance comes from collagen breakdown and fat particle suspension—essentially creating a stable colloidal system.
+              </p>
+
+              <h3>Emulsion Stability Theory</h3>
+              
+              <p>
+                The stability of ramen broth emulsion depends on several factors:
+              </p>
+              
+              <ul>
+                <li><strong>Particle size distribution:</strong> Smaller fat particles create better mouthfeel</li>
+                <li><strong>Viscosity gradient:</strong> Collagen provides thickening and stabilization</li>
+                <li><strong>Temperature control:</strong> Maintains optimal emulsion without breaking</li>
+                <li><strong>Agitation dynamics:</strong> Rolling boil creates mechanical emulsification</li>
+              </ul>
+
+              <h2>Flavor Chemistry: The Maillard Reaction</h2>
+              
+              <p>
+                The complex flavor profile of ramen comes largely from Maillard reactions—a cascade of chemical transformations between amino acids and reducing sugars that occurs during high-temperature cooking.
+              </p>
+
+              <h3>Reaction Kinetics</h3>
+              
+              <p>
+                The Maillard reaction rate follows Arrhenius kinetics:
+              </p>
+              
+              $$k = A e^{-E_a/RT}$$
+              
+              <p>
+                Where $E_a$ is activation energy (~50-70 kJ/mol for typical Maillard reactions). This explains why chashu (braised pork) develops much deeper flavors during long, low-temperature cooking compared to quick searing.
+              </p>
+
+              <h2>Control Systems Approach to Ramen</h2>
+              
+              <p>
+                As someone who works with feedback control systems, I've started thinking about ramen preparation as a multi-input, multi-output control problem. The system has several key parameters:
+              </p>
+
+              <h3>Input Variables</h3>
+              <ul>
+                <li>Water temperature (°C)</li>
+                <li>Cooking time (seconds)</li>
+                <li>Broth temperature (°C)</li>
+                <li>Noodle thickness (mm)</li>
+                <li>Salt concentration (%)</li>
+              </ul>
+
+              <h3>Output Variables</h3>
+              <ul>
+                <li>Noodle firmness (N/mm²)</li>
+                <li>Flavor intensity (subjective scale)</li>
+                <li>Broth opacity (%)</li>
+                <li>Overall satisfaction rating</li>
+              </ul>
+
+              <h2>Optimization Experiments</h2>
+              
+              <p>
+                I've been conducting systematic experiments to optimize my home ramen preparation. Using a PID-controlled sous vide system for chashu preparation and thermocouples for precise temperature monitoring, I've discovered some interesting relationships:
+              </p>
+
+              <h3>Key Findings</h3>
+              
+              <ol>
+                <li><strong>Noodle cooking time vs. thickness:</strong> $t = k \cdot d^{1.8}$ (where k ≈ 12 s/mm^1.8)</li>
+                <li><strong>Optimal broth serving temperature:</strong> 75-80°C (balances flavor release with safety)</li>
+                <li><strong>Egg preparation:</strong> 6.5 minutes at 63°C produces perfect jammy yolk consistency</li>
+                <li><strong>Tare (sauce base) mixing:</strong> Reynolds number > 2300 ensures proper turbulent mixing</li>
+              </ol>
+
+              <h2>The Engineering Mindset in Cooking</h2>
+              
+              <p>
+                What fascinates me about applying engineering principles to cooking is how it reveals the underlying complexity in seemingly simple processes. Every great ramen chef is essentially an intuitive process engineer, optimizing multiple variables simultaneously to achieve a desired output.
+              </p>
+
+              <h3>Process Control Lessons</h3>
+              
+              <p>
+                Some insights that translate well between ramen-making and my research work:
+              </p>
+
+              <blockquote>
+                <strong>Feedback is crucial:</strong> Constant tasting and adjustment mirrors the feedback loops in control systems. Small corrections early prevent major failures later.
+              </blockquote>
+
+              <blockquote>
+                <strong>System understanding beats recipes:</strong> Understanding the underlying physics allows for adaptation and improvement, just like understanding system dynamics enables better controller design.
+              </blockquote>
+
+              <blockquote>
+                <strong>Optimization has local minima:</strong> Sometimes you need to dramatically change your approach to find better solutions—both in cooking and in research.
+              </blockquote>
+
+              <h2>Beyond the Bowl: Applications</h2>
+              
+              <p>
+                The analytical approach to ramen has unexpected applications in my robotics research. The heat transfer models help with thermal management in robotic systems. The emulsification principles inform mixing algorithms for material processing robots. Even the timing coordination required for simultaneous noodle cooking, egg preparation, and broth heating resembles the multi-task scheduling problems we face in autonomous systems.
+              </p>
+
+              <h2>Conclusion</h2>
+              
+              <p>
+                Perfect ramen is more than just comfort food—it's a masterclass in applied engineering. The next time you slurp those perfectly chewy noodles in rich, creamy broth, remember that you're experiencing the result of complex heat transfer, fluid dynamics, and chemical engineering principles.
+              </p>
+
+              <p>
+                The marriage of science and culinary art reminds me why I love engineering: at its best, it helps us understand and improve the things that matter most to human experience. Whether we're designing robot control systems or perfecting ramen recipes, we're ultimately trying to create something that serves and delights people.
+              </p>
+
+              <p>
+                <em>Have your own food science experiments or questions about the engineering principles behind cooking? I'd love to hear from you! Reach out via <a href="mailto:ssagrawal@wpi.edu">email</a> or connect with me on <a href="https://www.linkedin.com/in/sapanostic/" target="_blank">LinkedIn</a>.</em>
+              </p>
+
+            </article>
+
+            <!-- Social Share -->
+            <div class="social-share">
+              <div class="share-btn twitter" data-platform="twitter">
+                <i class="fab fa-twitter"></i>
+                <span>Share on Twitter</span>
+              </div>
+              <div class="share-btn linkedin" data-platform="linkedin">
+                <i class="fab fa-linkedin-in"></i>
+                <span>Share on LinkedIn</span>
+              </div>
+              <div class="share-btn facebook" data-platform="facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Share on Facebook</span>
+              </div>
+              <div class="share-btn reddit" data-platform="reddit">
+                <i class="fab fa-reddit-alien"></i>
+                <span>Share on Reddit</span>
+              </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script>
+                var disqus_config = function () {
+                  this.page.url = window.location.href;
+                  this.page.identifier = 'science-perfect-ramen';
+                };
+                
+                (function() {
+                  var d = document, s = d.createElement('script');
+                  s.src = 'https://sapan-agrawal-blog.disqus.com/embed.js';
+                  s.setAttribute('data-timestamp', +new Date());
+                  (d.head || d.body).appendChild(s);
+                })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div style="text-align: center; padding: 2rem 0; border-top: 1px solid #e5e5e5; margin-top: 4rem; color: #888;">
+        <p>&copy; 2024 Sapan Agrawal. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+          <a href="../../../" style="color: #28D; text-decoration: none;">Portfolio</a> | 
+          <a href="../../" style="color: #28D; text-decoration: none;">Blog</a> | 
+          <a href="mailto:ssagrawal@wpi.edu" style="color: #28D; text-decoration: none;">Contact</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../../../js/jquery.js"></script>
+  
+  <!-- Social Share Functionality -->
+  <script>
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.share-btn')) {
+        e.preventDefault();
+        const platform = e.target.closest('.share-btn').dataset.platform;
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent('The Science of Perfect Ramen: Temperature, Timing, and Texture');
+        
+        const shareUrls = {
+          twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
+          linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+          reddit: `https://reddit.com/submit?url=${url}&title=${title}`
+        };
+        
+        if (shareUrls[platform]) {
+          window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

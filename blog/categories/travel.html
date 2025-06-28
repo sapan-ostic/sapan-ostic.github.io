@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Travel stories and cultural insights from around the world. Exploring the intersection of technology, culture, and adventure.">
+  
+  <!-- Page Title -->
+  <title>Travel - Sapan Agrawal's Blog</title>
+  
+  <!-- Favicon -->
+  <link href="../../images/profile/01_sapan_agrawal.jpg" rel="shortcut icon" type="image/x-icon"/>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="../../css/fontawesome-v4-font-face.css" rel="stylesheet" type="text/css"/>
+  <link href="../../css/fontawesome-v4-shims.css" rel="stylesheet" type="text/css"/>
+  <link href="../../css/fontawesome-main.css" rel="stylesheet" type="text/css"/>
+  <link href="../assets/css/independent-blog.css" rel="stylesheet" type="text/css"/>
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://sapan-ostic.github.io/blog/categories/travel.html"/>
+  <meta property="og:title" content="Travel - Sapan Agrawal's Blog"/>
+  <meta property="og:description" content="Travel stories and cultural insights from around the world."/>
+  <meta property="og:image" content="https://sapan-ostic.github.io/images/contents/01_sapan_agrawal.jpg"/>
+</head>
+
+<body>
+  <!-- Navigation Header -->
+  <header class="blog-nav-header">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="../" class="brand-link">
+          <img src="../../images/profile/01_sapan_agrawal.jpg" alt="Sapan Agrawal" class="brand-avatar">
+          <span class="brand-text">Sapan Agrawal</span>
+        </a>
+      </div>
+      
+      <nav class="nav-menu">
+        <a href="../" class="nav-link">Blog</a>
+        <a href="../../" class="nav-link">About Me</a>
+        <div class="nav-social">
+          <a href="https://github.com/sapan-ostic" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/sapanostic/" target="_blank" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/sapan-ostic" target="_blank" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="mailto:ssagrawal@wpi.edu" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="blog-main">
+    
+    <!-- Category Hero Section -->
+    <section class="blog-hero">
+      <div class="hero-container">
+        <h1 class="hero-title">Travel</h1>
+        <p class="hero-subtitle">
+          Exploring the world through the lens of technology and culture, discovering how innovation shapes different societies.
+        </p>
+      </div>
+    </section>
+
+    <!-- Navigation Breadcrumb -->
+    <section class="breadcrumb-section">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="../">Blog</a>
+          <span class="breadcrumb-separator">→</span>
+          <span class="breadcrumb-current">Travel</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Posts Grid -->
+    <section class="posts-section">
+      <div class="container">
+        <div class="posts-grid" id="travel-posts-grid">
+          <!-- Travel posts will be dynamically loaded here -->
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="load-more-container">
+          <button class="load-more-btn" id="load-more">Load More</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="blog-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Sapan Agrawal</h3>
+          <p>Robotics MS student at WPI, exploring the intersection of AI, planning, and control systems.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="rl-ai.html">Reinforcement Learning & AI</a></li>
+            <li><a href="travel.html" class="active">Travel</a></li>
+            <li><a href="food.html">Food</a></li>
+            <li><a href="life.html">Life</a></li>
+            <li><a href="everything-else.html">Everything Else</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="../../">Portfolio</a></li>
+            <li><a href="mailto:ssagrawal@wpi.edu">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/sapanostic/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/sapan-ostic" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Subscribe</h4>
+          <p>Get notified when I publish new posts</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Sapan Agrawal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../assets/js/independent-blog.js"></script>
+  <script>
+    // Filter posts for travel category when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.blogManager) {
+        // Set category filter to travel
+        window.blogManager.currentCategory = 'travel';
+        window.blogManager.filterPosts();
+        
+        // Update the posts grid
+        const postsGrid = document.getElementById('travel-posts-grid');
+        if (postsGrid) {
+          window.blogManager.filteredPosts.forEach(post => {
+            if (post.category === 'travel') {
+              const postElement = window.blogManager.createPostCard(post);
+              postsGrid.appendChild(postElement);
+            }
+          });
+        }
+        
+        // Update load more button
+        window.blogManager.updateLoadMoreButton();
+      }
+    });
+  </script>
+
+</body>
+</html>

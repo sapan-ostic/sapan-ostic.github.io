@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore insights on Reinforcement Learning, AI, Travel, Food, Life, and everything in between. Personal blog by Sapan Agrawal.">
+  
+  <!-- Page Title -->
+  <title>Sapan Agrawal - Blog</title>
+  
+  <!-- Favicon -->
+  <link href="../images/profile/01_sapan_agrawal.jpg" rel="shortcut icon" type="image/x-icon"/>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../css/fontawesome-v4-font-face.css" rel="stylesheet" type="text/css"/>
+  <link href="../css/fontawesome-v4-shims.css" rel="stylesheet" type="text/css"/>
+  <link href="../css/fontawesome-main.css" rel="stylesheet" type="text/css"/>
+  <link href="assets/css/independent-blog.css" rel="stylesheet" type="text/css"/>
+  <link href="assets/css/deepmind-blog-cards.css" rel="stylesheet" type="text/css"/>
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://sapan-ostic.github.io/blog/"/>
+  <meta property="og:title" content="Sapan Agrawal's Blog"/>
+  <meta property="og:description" content="Explore insights on Reinforcement Learning, AI, Travel, Food, Life, and everything in between."/>
+  <meta property="og:image" content="https://sapan-ostic.github.io/images/contents/01_sapan_agrawal.jpg"/>
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:domain" content="sapan-ostic.github.io/blog/"/>
+  <meta property="twitter:title" content="Sapan Agrawal's Blog"/>
+  <meta property="twitter:description" content="Explore insights on Reinforcement Learning, AI, Travel, Food, Life, and everything in between."/>
+  <meta property="twitter:image" content="https://sapan-ostic.github.io/images/contents/01_sapan_agrawal.jpg"/>
+  <meta property="twitter:url" content="https://sapan-ostic.github.io/blog/"/>
+</head>
+
+<body>
+  <!-- Navigation Header -->
+  <header class="blog-nav-header">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/" class="brand-link">
+          <img src="../images/profile/01_sapan_agrawal.jpg" alt="Sapan Agrawal" class="brand-avatar">
+          <span class="brand-text">Sapan Agrawal</span>
+        </a>
+      </div>
+      
+      <nav class="nav-menu">
+        <a href="#" class="nav-link active">Blog</a>
+        <a href="../" class="nav-link">About Me</a>
+        <div class="nav-social">
+          <a href="https://github.com/sapan-ostic" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/sapanostic/" target="_blank" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/sapan-ostic" target="_blank" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="mailto:ssagrawal@wpi.edu" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="blog-main">
+
+    <!-- Filter Section -->
+    <section class="blog-filter">
+      <div class="blog-filter__container">
+        <form class="blog-filter__form" id="blog-filter-form">
+          <div class="blog-filter__select">
+            <select class="blog-filter__dropdown" id="category-filter">
+              <option value="all">All Categories</option>
+              <option value="rl-ai">Reinforcement Learning & AI</option>
+              <option value="travel">Travel</option>
+              <option value="food">Food</option>
+              <option value="life">Life</option>
+              <option value="everything-else">Everything Else</option>
+            </select>
+          </div>
+          <div class="blog-filter__controls">
+            <div class="view-toggle" id="view-toggle">
+              <button type="button" class="view-toggle__btn view-toggle__btn--active" data-view="grid" id="grid-view-btn">
+                <i class="fas fa-th-large"></i>
+                <span>Grid</span>
+              </button>
+              <button type="button" class="view-toggle__btn" data-view="slide" id="slide-view-btn">
+                <i class="fas fa-layer-group"></i>
+                <span>Slides</span>
+              </button>
+            </div>
+            <button type="button" class="blog-filter__reset" id="filter-reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Posts Grid -->
+    <section class="posts-section" id="featured-post">
+      <div class="container">
+        <div class="blog-grid blog-grid--cols-3" id="posts-grid">
+          <!-- Posts will be dynamically loaded here -->
+        </div>
+        
+        <!-- Pagination -->
+        <div class="blog-pagination" id="pagination-container" style="display: none;">
+          <!-- Pagination will be dynamically generated -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="blog-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Sapan Agrawal</h3>
+          <p>Robotics MS student at WPI, exploring the intersection of AI, planning, and control systems.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="categories/rl-ai.html">Reinforcement Learning & AI</a></li>
+            <li><a href="categories/travel.html">Travel</a></li>
+            <li><a href="categories/food.html">Food</a></li>
+            <li><a href="categories/life.html">Life</a></li>
+            <li><a href="categories/everything-else.html">Everything Else</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="../">Portfolio</a></li>
+            <li><a href="mailto:ssagrawal@wpi.edu">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/sapanostic/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/sapan-ostic" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Subscribe</h4>
+          <p>Get notified when I publish new posts</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Sapan Agrawal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="assets/js/independent-blog.js"></script>
+
+</body>
+</html>
