@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Iframe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .iframe-container {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        .error-log {
+            background: #ffe6e6;
+            border: 1px solid #ff9999;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Demo Iframe Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Direct Demo Link</h2>
+        <p>Testing if the demo loads directly:</p>
+        <a href="demos/mdp_grid_world.html" target="_blank">Open Demo in New Tab</a>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Iframe with Relative Path</h2>
+        <p>Testing iframe with relative path (like in blog posts):</p>
+        <div class="iframe-container">
+            <iframe src="demos/mdp_grid_world.html" title="MDP Grid World Demo - Relative Path"></iframe>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Iframe with Cache-busting</h2>
+        <p>Testing iframe with cache-busting parameter:</p>
+        <div class="iframe-container">
+            <iframe src="demos/mdp_grid_world.html?v=3" title="MDP Grid World Demo - Cache Busting"></iframe>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Iframe with Absolute Path</h2>
+        <p>Testing iframe with absolute GitHub Pages URL:</p>
+        <div class="iframe-container">
+            <iframe src="https://sapan-ostic.github.io/demos/mdp_grid_world.html" title="MDP Grid World Demo - Absolute Path"></iframe>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Error Log</h2>
+        <p>Any JavaScript errors will appear below:</p>
+        <div id="error-log" class="error-log">No errors logged yet.</div>
+    </div>
+
+    <script>
+        // Log any errors to the page
+        window.addEventListener('error', function(e) {
+            const errorLog = document.getElementById('error-log');
+            const errorMessage = `Error: ${e.message}\nFile: ${e.filename}\nLine: ${e.lineno}\nColumn: ${e.colno}\nStack: ${e.error?.stack || 'N/A'}\n\n`;
+            errorLog.textContent = errorLog.textContent === 'No errors logged yet.' ? errorMessage : errorLog.textContent + errorMessage;
+        });
+
+        // Log iframe load events
+        document.querySelectorAll('iframe').forEach((iframe, index) => {
+            iframe.addEventListener('load', function() {
+                console.log(`Iframe ${index + 1} loaded successfully`);
+            });
+            
+            iframe.addEventListener('error', function() {
+                console.error(`Iframe ${index + 1} failed to load`);
+                const errorLog = document.getElementById('error-log');
+                const errorMessage = `Iframe ${index + 1} failed to load: ${iframe.src}\n`;
+                errorLog.textContent = errorLog.textContent === 'No errors logged yet.' ? errorMessage : errorLog.textContent + errorMessage;
+            });
+        });
+    </script>
+</body>
+</html>
