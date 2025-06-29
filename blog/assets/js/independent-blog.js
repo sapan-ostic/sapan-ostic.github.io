@@ -544,8 +544,8 @@ class IndependentBlogManager {
     
     // Determine if post should have external link
     const isDemo = post.demo && post.id === 1;
-    const href = isDemo ? '/demos/mdp_grid_world.html' : '#';
-    const target = isDemo ? '_blank' : '_self';
+    const href = isDemo ? '/blog/posts/rl-ai/mdp-grid-world-visualization.html' : '#';
+    const target = isDemo ? '_self' : '_self';
     
     // Use appropriate static images based on category
     let imageSrc = '../images/profile/01_sapan_agrawal.jpg'; // Default
