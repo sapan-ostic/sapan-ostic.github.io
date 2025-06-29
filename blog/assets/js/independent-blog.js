@@ -45,7 +45,7 @@ class IndependentBlogManager {
         image: "/blog/assets/images/mdp-grid-world-thumbnail.jpg",
         featured: true,
         demo: true,
-        demoUrl: "/mdp_grid_world.html"
+        demoUrl: "/demos/mdp_grid_world.html"
       },
       {
         id: 2,
@@ -544,7 +544,7 @@ class IndependentBlogManager {
     
     // Determine if post should have external link
     const isDemo = post.demo && post.id === 1;
-    const href = isDemo ? '/mdp_grid_world.html' : '#';
+    const href = isDemo ? '/demos/mdp_grid_world.html' : '#';
     const target = isDemo ? '_blank' : '_self';
     
     // Use appropriate static images based on category

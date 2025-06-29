@@ -40,7 +40,7 @@ class IndependentBlogManager {
         image: "/blog/assets/images/mdp-grid-world-thumbnail.jpg",
         featured: true,
         demo: true,
-        demoUrl: "/mdp_grid_world.html"
+        demoUrl: "/demos/mdp_grid_world.html"
       },
       {
         id: 2,
