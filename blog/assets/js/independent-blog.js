@@ -124,6 +124,23 @@ class IndependentBlogManager {
       },
       {
         id: 7,
+        title: "Policy Gradient Neural Networks: Interactive Learning Demo",
+        slug: "policy-gradient-demo",
+        category: "rl-ai",
+        categoryName: "Reinforcement Learning & AI",
+        excerpt: "Dive into policy gradient algorithms through an interactive neural network demonstration featuring real-time training, boundary avoidance learning, and comparison with classical PID control.",
+        content: "",
+        author: "Sapan Agrawal",
+        date: "2025-07-03",
+        readTime: "8 min read",
+        tags: ["Policy Gradients", "Neural Networks", "Interactive Demo", "REINFORCE", "PID Control"],
+        image: "/blog/assets/images/policy-gradient-demo-thumbnail.jpg",
+        featured: true,
+        demo: true,
+        demoUrl: "/demos/policy_gradient_fixed.html"
+      },
+      {
+        id: 8,
         title: "Policy Gradient Methods: REINFORCE and Beyond",
         slug: "policy-gradient-methods-reinforce",
         category: "rl-ai",
@@ -138,7 +155,7 @@ class IndependentBlogManager {
         featured: false
       },
       {
-        id: 8,
+        id: 9,
         title: "Hidden Gems of Kyoto: Beyond the Tourist Trail",
         slug: "hidden-gems-kyoto-beyond-tourist-trail",
         category: "travel",
@@ -543,15 +560,28 @@ class IndependentBlogManager {
     postCard.dataset.category = post.category;
     
     // Determine if post should have external link
-    const isDemo = post.demo && post.id === 1;
-    const href = isDemo ? '/blog/posts/rl-ai/mdp-grid-world-visualization.html' : '#';
+    const isDemo = post.demo && (post.id === 1 || post.id === 7);
+    let href = '#';
+    if (isDemo) {
+      if (post.id === 1) {
+        href = '/blog/posts/rl-ai/mdp-grid-world-visualization.html';
+      } else if (post.id === 7) {
+        href = '/blog/posts/rl-ai/policy-gradient-demo.html';
+      }
+    }
     const target = isDemo ? '_self' : '_self';
     
-    // Use appropriate static images based on category
+    // Use appropriate static images based on category and specific posts
     let imageSrc = '../images/profile/01_sapan_agrawal.jpg'; // Default
     switch(post.category) {
       case 'rl-ai':
-        imageSrc = '/blog/assets/images/mdp-grid-world-thumbnail.jpg';
+        if (post.id === 1) {
+          imageSrc = '/blog/assets/images/mdp-grid-world-thumbnail.jpg';
+        } else if (post.id === 7) {
+          imageSrc = '/blog/assets/images/policy-gradient-demo-thumbnail.jpg';
+        } else {
+          imageSrc = '/blog/assets/images/mdp-grid-world-thumbnail.jpg'; // Fallback for RL posts
+        }
         break;
       case 'travel':
         imageSrc = '../images/profile/01_sapan_agrawal.jpg';
