@@ -4,10 +4,10 @@
   <!-- Basic Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore Policy Gradient algorithms through an interactive neural network demonstration featuring reinforcement learning, boundary avoidance, and real-time training visualization.">
+  <meta name="description" content="Explore policy gradient algorithms through an interactive grid world demonstration featuring REINFORCE learning, stochastic policies, and real-time trajectory visualization.">
   
   <!-- Page Title -->
-  <title>Policy Gradient Neural Network: Interactive RL Demo - Sapan Agrawal's Blog</title>
+  <title>REINFORCE Policy Gradient: Interactive Grid World Demo - Sapan Agrawal's Blog</title>
   
   <!-- Favicon -->
   <link href="../../../images/profile/01_sapan_agrawal.jpg" rel="shortcut icon" type="image/x-icon"/>
@@ -40,8 +40,8 @@
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article"/>
   <meta property="og:url" content="https://sapan-ostic.github.io/blog/posts/rl-ai/policy-gradient-demo.html"/>
-  <meta property="og:title" content="Policy Gradient Neural Network: Interactive Reinforcement Learning Demo"/>
-  <meta property="og:description" content="Explore Policy Gradient algorithms through an interactive neural network demonstration featuring reinforcement learning, boundary avoidance, and real-time training visualization."/>
+  <meta property="og:title" content="REINFORCE Policy Gradient: Interactive Grid World Demo"/>
+  <meta property="og:description" content="Explore policy gradient algorithms through an interactive grid world demonstration featuring REINFORCE learning, stochastic policies, and real-time trajectory visualization."/>
   <meta property="og:image" content="https://sapan-ostic.github.io/images/contents/01_sapan_agrawal.jpg"/>
 </head>
 
@@ -49,42 +49,60 @@
   <!-- Navigation Header -->
   <header class="blog-nav-header">
     <div class="nav-container">
-      <a href="../../index.html" class="blog-logo">
-        <img src="../../../images/profile/01_sapan_agrawal.jpg" alt="Sapan Agrawal">
-        <span>Sapan's Blog</span>
-      </a>
+      <div class="nav-brand">
+        <a href="../../" class="brand-link">
+          <img src="../../../images/profile/01_sapan_agrawal.jpg" alt="Sapan Agrawal" class="brand-avatar">
+          <span class="brand-text">Sapan Agrawal</span>
+        </a>
+      </div>
       
-      <nav class="blog-nav">
-        <a href="../../index.html">All Posts</a>
-        <a href="../../categories/rl-ai.html" class="nav-active">RL & AI</a>
-        <a href="../../categories/travel.html">Travel</a>
-        <a href="../../categories/food.html">Food</a>
-        <a href="../../categories/life.html">Life</a>
-        <a href="../../categories/everything-else.html">Everything Else</a>
+      <nav class="nav-menu">
+        <a href="../../" class="nav-link">Blog</a>
+        <a href="../../../" class="nav-link">About Me</a>
+        <div class="nav-social">
+          <a href="https://github.com/sapan-ostic" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/sapanostic/" target="_blank" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/sapan-ostic" target="_blank" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="mailto:ssagrawal@wpi.edu" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
       </nav>
-      
-      <a href="../../../index.html" class="back-to-main">← Back to Main Site</a>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="blog-post">
-    <div class="container">
-      <!-- Post Header -->
+  <main class="blog-main">
+    
+    <!-- Article Header -->
+    <article class="blog-post">
       <header class="post-header">
         <div class="narrow-container">
+          <!-- Breadcrumb -->
+          <nav class="breadcrumb">
+            <a href="../../">Blog</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="../../categories/rl-ai.html">Reinforcement Learning & AI</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">REINFORCE Policy Gradient Demo</span>
+          </nav>
+          
           <div class="post-meta">
-            <span class="post-date">July 3, 2025</span>
-            <span class="post-category">
-              <a href="../../categories/rl-ai.html">RL & AI</a>
-            </span>
+            <span class="post-category rl-ai">Reinforcement Learning & AI</span>
+            <time class="post-date">July 3, 2025</time>
             <span class="post-read-time">8 min read</span>
           </div>
           
-          <h1 class="post-title">Policy Gradient Neural Networks: Interactive Learning Demo</h1>
+          <h1 class="post-title">REINFORCE Policy Gradient: Interactive Grid World Demo</h1>
           
           <p class="post-excerpt">
-            Dive into policy gradient algorithms through an interactive neural network demonstration featuring real-time training, boundary avoidance learning, and comparison with classical PID control.
+            Explore policy gradient algorithms through an interactive grid world demonstration featuring REINFORCE learning, stochastic policies, and real-time trajectory visualization.
           </p>
           
           <div class="post-author">
@@ -106,7 +124,7 @@
             <div class="demo-header">
               <div class="demo-title">
                 <i class="fas fa-play-circle"></i>
-                Interactive Policy Gradient Demo
+                Interactive REINFORCE Policy Gradient Demo
               </div>
               <div class="demo-controls">
                 <button class="demo-control-btn" id="maximize-demo">
@@ -116,12 +134,12 @@
               </div>
             </div>
             <div class="demo-body">
-              <iframe src="../../../demos/policy_gradient_fixed.html" title="Policy Gradient Neural Network Interactive Demo" id="demo-iframe"></iframe>
+              <iframe src="../../../demos/policy_gradient.html" title="REINFORCE Policy Gradient Interactive Demo" id="demo-iframe"></iframe>
             </div>
           </div>
 
           <p>
-            Policy gradient methods represent a powerful class of reinforcement learning algorithms that directly optimize the policy parameters to maximize expected rewards. Unlike value-based methods that learn value functions, policy gradient approaches learn a parameterized policy that can handle continuous action spaces and stochastic policies naturally.
+            Policy gradient methods represent a powerful class of reinforcement learning algorithms that directly optimize the policy parameters to maximize expected rewards. Unlike value-based methods that learn value functions, policy gradient approaches can naturally handle continuous action spaces and stochastic policies. This interactive demonstration showcases the REINFORCE algorithm in a grid world environment.
           </p>
 
           <h2>Understanding Policy Gradient Methods</h2>
@@ -143,236 +161,421 @@
             <li><strong>$\nabla_\theta \log \pi_\theta(a|s)$</strong>: Policy gradient (score function)</li>
           </ul>
 
-          <h2>REINFORCE Algorithm Implementation</h2>
+          <h2>REINFORCE Algorithm in Grid World</h2>
           
           <p>
-            The demonstration implements the REINFORCE algorithm with baseline reduction for variance control. The algorithm follows these key steps:
+            The demonstration implements the REINFORCE algorithm in a discrete grid world environment. Unlike the MDP value iteration demo, this approach learns a stochastic policy that samples actions probabilistically rather than always choosing the optimal action.
           </p>
           
           <ol>
-            <li><strong>Sample Episode:</strong> Generate trajectory under current policy</li>
-            <li><strong>Compute Returns:</strong> Calculate discounted returns for each timestep</li>
-            <li><strong>Baseline Subtraction:</strong> Reduce variance using advantage estimation</li>
-            <li><strong>Policy Update:</strong> Update parameters using policy gradient</li>
+            <li><strong>Episode Generation:</strong> The agent follows the current policy to generate complete episodes</li>
+            <li><strong>Return Calculation:</strong> Compute discounted returns $G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$ for each timestep</li>
+            <li><strong>Policy Update:</strong> Update parameters using $\theta \leftarrow \theta + \alpha \nabla_\theta \log \pi_\theta(a_t|s_t) G_t$</li>
+            <li><strong>Repeat:</strong> Generate new episodes with the updated policy</li>
           </ol>
 
-          <h2>Neural Network Architecture</h2>
+          <h2>Key Features of the Grid World Demo</h2>
           
           <p>
-            The policy network uses a simple two-layer architecture optimized for continuous control:
-          </p>
-          
-          <pre><code class="language-javascript">
-// Neural network architecture
-const HIDDEN_SIZE = 16;
-const INPUT_SIZE = 4;  // [pos_x, pos_y, goal_dx, goal_dy]
-const OUTPUT_SIZE = 4; // [mean_dx, mean_dy, log_std_dx, log_std_dy]
-
-// Policy output represents Gaussian distribution parameters
-const policyOutput = {
-  meanDx: tanh(output[0]) * MAX_STEP,
-  meanDy: tanh(output[1]) * MAX_STEP,
-  logStdDx: clamp(output[2], -2.0, 0.9),
-  logStdDy: clamp(output[3], -2.0, 0.9)
-};
-          </code></pre>
-
-          <h2>Key Features of the Demonstration</h2>
-          
-          <p>
-            The interactive demo showcases several advanced reinforcement learning concepts:
+            The interactive demonstration showcases several important concepts in policy gradient learning:
           </p>
 
-          <h3>Gaussian Policy Representation</h3>
+          <h3>Stochastic Policy Representation</h3>
           
           <p>
-            The policy outputs parameters of a Gaussian distribution for continuous action selection:
+            Unlike value-based methods that use deterministic policies (always choosing the action with highest value), REINFORCE learns a stochastic policy using softmax action selection:
           </p>
           
-          $$a \sim \mathcal{N}(\mu_\theta(s), \sigma_\theta(s))$$
+          $$\pi_\theta(a|s) = \frac{\exp(\theta(s,a))}{\sum_{a'} \exp(\theta(s,a'))}$$
           
           <p>
-            This allows for natural exploration through stochastic action sampling while maintaining differentiability for gradient-based optimization.
+            This enables natural exploration during learning while still converging to optimal behavior.
           </p>
 
-          <h3>Exploration Scheduling</h3>
+          <h3>Learning Trajectory Visualization</h3>
           
           <p>
-            The demo implements adaptive exploration that starts high and gradually decreases:
-          </p>
-          
-          <pre><code class="language-javascript">
-const explorationSchedule = (episode) => {
-  return Math.max(0.2, Math.min(1.0, 2000 / (episode + 2000)));
-};
-
-// Dynamic variance bounds based on training progress
-const minLogStd = -2.0 * (1.0 - explorationFactor) - 0.1 * explorationFactor;
-const maxLogStd = 0.9 * explorationFactor + 0.3 * (1.0 - explorationFactor);
-          </code></pre>
-
-          <h3>Boundary Avoidance Learning</h3>
-          
-          <p>
-            A key feature is the agent's ability to learn boundary avoidance through:
+            The demo shows learning episodes as colored paths overlaid on the grid:
           </p>
           
           <ul>
-            <li><strong>Strong penalties:</strong> -15 reward for boundary contact</li>
-            <li><strong>Episode termination:</strong> Immediate episode end at boundaries</li>
-            <li><strong>Visual feedback:</strong> Real-time collision indicators</li>
-            <li><strong>Performance tracking:</strong> Boundary collision statistics</li>
+            <li><strong>Orange/Red paths:</strong> Recent learning episodes showing exploration behavior</li>
+            <li><strong>Blue/Green paths:</strong> Manual agent movement showing exploitation of learned policy</li>
+            <li><strong>Policy arrows:</strong> Visualize the learned policy with confidence-based opacity</li>
+            <li><strong>Heatmap:</strong> Shows policy confidence across different states</li>
           </ul>
 
-          <h2>Reward Shaping and Engineering</h2>
+          <h3>Continuous Learning Mode</h3>
           
           <p>
-            Effective reward design is crucial for policy gradient success. The demo uses sophisticated reward shaping:
-          </p>
-          
-          <pre><code class="language-javascript">
-// Multi-component reward function
-const getReward = (pos, goal, prevPos) => {
-  let reward = 0;
-  
-  // Goal achievement reward
-  if (distance < GOAL_RADIUS) {
-    reward += 30;
-  }
-  
-  // Progress-based shaping with exponential scaling
-  const progressMultiplier = 10 * (1 + 5 * Math.exp(-distance / 50));
-  reward += progress * progressMultiplier;
-  
-  // Distance-based reward with exponential curve
-  reward += 12 * Math.exp(-3 * normalizedDistance);
-  
-  // Boundary penalties
-  if (nearBoundary) {
-    reward -= 8;
-  }
-  
-  return reward;
-};
-          </code></pre>
-
-          <h2>Performance Comparison: Neural Network vs PID</h2>
-          
-          <p>
-            The demo includes a classical PID controller for performance comparison, highlighting the differences between:
+            The demonstration includes a continuous learning feature that automatically runs learning episodes, allowing you to observe:
           </p>
           
           <ul>
-            <li><strong>Learning-based approaches:</strong> Adaptive, can handle complex environments</li>
-            <li><strong>Classical control:</strong> Deterministic, well-understood, tunable</li>
-            <li><strong>Exploration vs Exploitation:</strong> Neural networks naturally explore, PID is deterministic</li>
-            <li><strong>Generalization:</strong> Learned policies can adapt to new scenarios</li>
+            <li>Policy improvement over time</li>
+            <li>Convergence to optimal paths</li>
+            <li>Episode return statistics</li>
+            <li>Average return progression</li>
           </ul>
 
-          <h2>Implementation Insights</h2>
+          <h2>Implementation Details</h2>
           
           <p>
-            Building this demonstration revealed several important considerations for policy gradient implementations:
+            The grid world REINFORCE implementation demonstrates several key technical aspects:
           </p>
 
-          <h3>Numerical Stability</h3>
+          <h3>Policy Parameterization</h3>
           
           <p>
-            Careful attention to numerical stability through gradient clipping, parameter bounds, and safe mathematical operations:
-          </p>
-          
-          <pre><code class="language-javascript">
-// Gradient clipping for stability
-const clipGradient = (grad, maxNorm = 5.0) => {
-  const norm = Math.sqrt(grad.reduce((sum, g) => sum + g * g, 0));
-  return norm > maxNorm ? grad.map(g => g * maxNorm / norm) : grad;
-};
-
-// Safe log probability computation
-const logProb = (action, mean, logStd) => {
-  const std = Math.exp(Math.max(-5, Math.min(2, logStd)));
-  const diff = Math.max(-10, Math.min(10, action - mean));
-  return -0.5 * Math.log(2 * Math.PI) - logStd - 0.5 * (diff * diff) / (std * std);
-};
-          </code></pre>
-
-          <h3>Experience Replay for Sample Efficiency</h3>
-          
-          <p>
-            The demo implements a simple experience replay mechanism to improve sample efficiency by replaying successful episodes:
+            Each state-action pair has a parameter $\theta(s,a)$ that determines the probability of selecting that action:
           </p>
           
           <pre><code class="language-javascript">
-// Prioritize successful episodes for replay
-const successfulEpisodes = experienceBuffer.filter(ep => 
-  ep.trajectory.some(step => reachedGoal(step.position))
-);
+// Initialize policy parameters for each state-action pair
+initializePolicyParams() {
+    this.policyParams = {};
+    for (let x = 0; x < this.cols; x++) {
+        for (let y = 0; y < this.rows; y++) {
+            const stateKey = `${x},${y}`;
+            this.policyParams[stateKey] = {};
+            this.actions.forEach(action => {
+                this.policyParams[stateKey][action] = (Math.random() - 0.5) * 0.1;
+            });
+        }
+    }
+}
 
-if (successfulEpisodes.length > 0) {
-  const replayEpisode = successfulEpisodes[
-    Math.floor(Math.random() * successfulEpisodes.length)
-  ];
-  updatePolicy(replayEpisode.trajectory, replayEpisode.totalReward, 0.5);
+// Compute action probabilities using softmax
+computeActionProbabilities(x, y) {
+    const stateKey = `${x},${y}`;
+    const params = this.policyParams[stateKey];
+    const expValues = {};
+    let sum = 0;
+    
+    this.actions.forEach(action => {
+        expValues[action] = Math.exp(params[action]);
+        sum += expValues[action];
+    });
+    
+    const probabilities = {};
+    this.actions.forEach(action => {
+        probabilities[action] = expValues[action] / sum;
+    });
+    
+    return probabilities;
 }
           </code></pre>
+
+          <h3>Episode-Based Learning</h3>
+          
+          <p>
+            REINFORCE is a Monte Carlo method that learns from complete episodes:
+          </p>
+          
+          <pre><code class="language-javascript">
+// Generate a complete episode following current policy
+runEpisode() {
+    const episode = [];
+    let state = this.getStartPosition();
+    
+    while (!this.isTerminal(state) && episode.length < this.maxStepsPerEpisode) {
+        const probabilities = this.computeActionProbabilities(state.x, state.y);
+        const action = this.sampleAction(probabilities);
+        const nextState = this.getNextState(state, action);
+        const reward = this.getReward(state, action, nextState);
+        
+        episode.push({
+            state: state,
+            action: action,
+            reward: reward,
+            logProb: Math.log(probabilities[action])
+        });
+        
+        state = nextState;
+    }
+    
+    return episode;
+}
+
+// Update policy using REINFORCE algorithm
+updatePolicyGradient(episode) {
+    const returns = this.computeReturns(episode);
+    
+    episode.forEach((step, t) => {
+        const G_t = returns[t];
+        const stateKey = `${step.state.x},${step.state.y}`;
+        
+        // Update parameters for all actions
+        this.actions.forEach(action => {
+            const gradient = (action === step.action ? 1 : 0) - 
+                           this.computeActionProbabilities(step.state.x, step.state.y)[action];
+            
+            this.policyParams[stateKey][action] += 
+                this.learningRate * gradient * G_t;
+        });
+    });
+}
+          </code></pre>
+
+          <h2>Comparison with Value-Based Methods</h2>
+          
+          <p>
+            This REINFORCE demonstration complements the MDP value iteration demo by showing the key differences:
+          </p>
+          
+          <ul>
+            <li><strong>Policy vs. Value Learning:</strong> Direct policy optimization vs. learning state values</li>
+            <li><strong>Stochastic vs. Deterministic:</strong> Probabilistic action selection vs. greedy policies</li>
+            <li><strong>Episode vs. Timestep Updates:</strong> Monte Carlo vs. bootstrapping approaches</li>
+            <li><strong>Exploration:</strong> Built-in through stochastic policy vs. ε-greedy methods</li>
+          </ul>
 
           <h2>Interactive Features</h2>
           
           <p>
-            Try the following interactions with the demo:
+            Try the following interactions with the grid world demo:
           </p>
           
           <ul>
-            <li><strong>Start/Pause Training:</strong> Observe real-time learning progress</li>
-            <li><strong>Goal Repositioning:</strong> Click anywhere to move the target and watch adaptation</li>
-            <li><strong>Controller Switching:</strong> Compare neural network vs PID performance</li>
-            <li><strong>Parameter Tuning:</strong> Adjust PID gains to understand classical control</li>
-            <li><strong>Performance Monitoring:</strong> Track success rates and boundary collisions</li>
+            <li><strong>Run Learning Episodes:</strong> Click "Learn" to run single episodes and observe policy updates</li>
+            <li><strong>Continuous Learning:</strong> Enable automatic learning with the "Start Continuous" button</li>
+            <li><strong>Agent Movement:</strong> Use "Move Agent" for greedy action selection or "Move Agent (Stochastic)" for probabilistic sampling</li>
+            <li><strong>Grid Editing:</strong> Modify the environment by changing cell types (goal, penalty, obstacle)</li>
+            <li><strong>Learning Trajectories:</strong> Toggle visualization of recent learning episodes</li>
+            <li><strong>Policy Visualization:</strong> Observe policy arrows and confidence heatmaps</li>
           </ul>
 
           <h2>Theoretical Background</h2>
           
           <p>
-            Policy gradient methods have strong theoretical foundations in optimization and probability theory. The policy gradient theorem provides the mathematical justification for directly optimizing policy parameters, while variance reduction techniques like baselines and advantage estimation improve practical performance.
+            Policy gradient methods have strong theoretical foundations. The key insight is that we can estimate the gradient of the expected return directly from sample episodes:
           </p>
 
-          <h3>Variance Reduction</h3>
+          <h3>The Policy Gradient Theorem</h3>
           
           <p>
-            High variance is a common challenge in policy gradient methods. The demo implements several variance reduction techniques:
+            The fundamental result that enables policy gradient methods:
           </p>
           
-          <ul>
-            <li><strong>Baseline Subtraction:</strong> $A(s,a) = Q(s,a) - V(s)$</li>
-            <li><strong>Return Normalization:</strong> Standardizing advantages across episodes</li>
-            <li><strong>Momentum Updates:</strong> Smoothing gradient estimates over time</li>
-          </ul>
+          $$\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}\left[\sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t) G_t\right]$$
+          
+          <p>
+            Where $G_t$ is the return from timestep $t$. This shows that we can estimate the gradient using the score function $\nabla_\theta \log \pi_\theta(a_t|s_t)$ weighted by the return.
+          </p>
+
+          <h3>Variance Considerations</h3>
+          
+          <p>
+            A key challenge in policy gradient methods is the high variance of gradient estimates. The demonstration shows how returns can vary significantly between episodes, which affects learning stability.
+          </p>
 
           <h2>Future Extensions</h2>
           
           <p>
-            This demonstration could be extended with several advanced techniques:
+            This grid world demonstration could be extended with several advanced techniques:
           </p>
           
           <ul>
-            <li><strong>Actor-Critic Methods:</strong> Learn both policy and value function</li>
-            <li><strong>Natural Policy Gradients:</strong> Use Fisher information metric</li>
-            <li><strong>Trust Region Methods:</strong> Constrain policy updates (TRPO, PPO)</li>
-            <li><strong>Multi-Agent Scenarios:</strong> Multiple learning agents</li>
-            <li><strong>Continuous Observation Spaces:</strong> Image-based observations</li>
+            <li><strong>Actor-Critic Methods:</strong> Combine with value function learning for variance reduction</li>
+            <li><strong>Natural Policy Gradients:</strong> Use the Fisher information matrix for more principled updates</li>
+            <li><strong>Baseline Functions:</strong> Learn state-dependent baselines to reduce variance</li>
+            <li><strong>Multi-Agent Learning:</strong> Multiple agents learning simultaneously</li>
+            <li><strong>Continuous Action Spaces:</strong> Extend to continuous control problems</li>
+            <li><strong>Function Approximation:</strong> Use neural networks for large state spaces</li>
           </ul>
 
           <h2>Conclusion</h2>
           
           <p>
-            Policy gradient methods represent a fundamental approach to reinforcement learning that bridges the gap between supervised learning and optimal control. This interactive demonstration illustrates the key concepts while showcasing practical implementation considerations that are crucial for real-world applications.
+            Policy gradient methods, exemplified by REINFORCE, offer a direct approach to policy optimization that naturally handles stochastic policies and provides theoretical guarantees. This interactive grid world demonstration illustrates the core concepts while highlighting the differences from value-based approaches.
           </p>
           
           <p>
-            The ability to learn complex behaviors through interaction, handle continuous action spaces, and adapt to changing environments makes policy gradient algorithms invaluable tools in modern AI and robotics applications.
+            The visualization of learning trajectories, policy evolution, and stochastic action selection provides intuitive understanding of how policy gradient algorithms explore and converge to optimal behavior. Understanding these fundamentals is essential for tackling more complex reinforcement learning challenges in robotics, game playing, and decision-making systems.
           </p>
 
+          <p>
+            <em>Have questions or want to discuss further? Feel free to reach out via <a href="mailto:ssagrawal@wpi.edu">email</a> or connect with me on <a href="https://www.linkedin.com/in/sapanostic/" target="_blank">LinkedIn</a>.</em>
+          </p>
+          
         </div>
+      </section>
+      
+      <!-- Social Sharing -->
+      <section class="post-sharing">
+        <div class="narrow-container">
+          <h3 class="sharing-title">Share this post</h3>
+          <div class="sharing-buttons">
+            <a href="#" class="share-btn twitter" data-platform="twitter">
+              <i class="fab fa-twitter"></i>
+              Twitter
+            </a>
+            <a href="#" class="share-btn linkedin" data-platform="linkedin">
+              <i class="fab fa-linkedin-in"></i>
+              LinkedIn
+            </a>
+            <a href="#" class="share-btn facebook" data-platform="facebook">
+              <i class="fab fa-facebook-f"></i>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </section>
+      
+    </article>
+
+  </main>
+
+  <!-- Fullscreen Modal for Policy Gradient Demo -->
+  <div class="fullscreen-modal" id="fullscreen-modal">
+    <div class="fullscreen-header">
+      <h2 class="fullscreen-title">REINFORCE Policy Gradient: Interactive Grid World</h2>
+      <button id="minimize-demo" class="demo-control-btn">
+        <i class="fas fa-compress"></i>
+        <span>Minimize</span>
+      </button>
+    </div>
+    <div class="fullscreen-content">
+      <iframe 
+        src="../../../demos/policy_gradient.html" 
+        class="fullscreen-iframe"
+        id="fullscreen-iframe"
+        title="REINFORCE Policy Gradient Interactive Demo - Fullscreen"
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="blog-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Sapan Agrawal</h3>
+          <p>Robotics MS student at WPI, exploring the intersection of AI, planning, and control systems.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="../../categories/rl-ai.html">Reinforcement Learning & AI</a></li>
+            <li><a href="../../categories/travel.html">Travel</a></li>
+            <li><a href="../../categories/food.html">Food</a></li>
+            <li><a href="../../categories/life.html">Life</a></li>
+            <li><a href="../../categories/everything-else.html">Everything Else</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="../../../">Portfolio</a></li>
+            <li><a href="mailto:ssagrawal@wpi.edu">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/sapanostic/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/sapan-ostic" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Subscribe</h4>
+          <p>Get notified when I publish new posts</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sapan Agrawal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../assets/js/independent-blog.js"></script>
+  <script>
+    // Initialize syntax highlighting
+    hljs.highlightAll();
+    
+    // Demo maximize/minimize functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const maximizeBtn = document.getElementById('maximize-demo');
+      const minimizeBtn = document.getElementById('minimize-demo');
+      const fullscreenModal = document.getElementById('fullscreen-modal');
+      
+      // Maximize demo event listener
+      if (maximizeBtn) {
+        maximizeBtn.addEventListener('click', () => {
+          openFullscreenDemo();
+        });
+      }
+      
+      // Minimize demo event listener
+      if (minimizeBtn) {
+        minimizeBtn.addEventListener('click', () => {
+          closeFullscreenDemo();
+        });
+      }
+      
+      // Close modal on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && fullscreenModal && fullscreenModal.classList.contains('active')) {
+          closeFullscreenDemo();
+        }
+      });
+      
+      // Fullscreen demo functions
+      function openFullscreenDemo() {
+        if (fullscreenModal) {
+          fullscreenModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          
+          // Analytics tracking
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'demo_maximize', {
+              'event_category': 'engagement',
+              'event_label': 'policy_gradient_demo'
+            });
+          }
+        }
+      }
+      
+      function closeFullscreenDemo() {
+        if (fullscreenModal) {
+          fullscreenModal.classList.remove('active');
+          document.body.style.overflow = '';
+          
+          // Analytics tracking
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'demo_minimize', {
+              'event_category': 'engagement',
+              'event_label': 'policy_gradient_demo'
+            });
+          }
+        }
+      }
+    });
+    
+    // Social sharing functionality
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.share-btn')) {
+        e.preventDefault();
+        const platform = e.target.closest('.share-btn').dataset.platform;
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent('REINFORCE Policy Gradient: Interactive Grid World Demo');
+        
+        const shareUrls = {
+          twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
+          linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+          facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
+        };
+        
+        if (shareUrls[platform]) {
+          window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+        }
+      }
+    });
       </section>
     </div>
   </main>
@@ -450,19 +653,6 @@ if (successfulEpisodes.length > 0) {
         }
       }, 3000);
     });
-
-    demoIframe.addEventListener('mouseleave', function() {
-      clearTimeout(interactionTimeout);
-    });
-  </script>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR-GA-ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-YOUR-GA-ID');
   </script>
 
 </body>

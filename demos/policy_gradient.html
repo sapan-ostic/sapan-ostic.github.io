@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDP Grid World - REINFORCE Policy Gradient with Path Visualization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #f7f8fc;
+            --card-background: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #718096;
+            --border-color: #e2e8f0;
+            --accent-primary: #4299e1;
+            --accent-primary-hover: #2b6cb0;
+            --accent-green: #48bb78;
+            --accent-red: #f56565;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            padding: 1.5rem;
+        }
+
+        .page-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(320px, 1fr) minmax(280px, 0.75fr);
+            grid-template-rows: auto auto 1fr;
+            grid-template-areas:
+                "header header"
+                "main-grid controls"
+                "analytics analytics";
+            gap: 1.25rem;
+        }
+        
+        .header {
+            grid-area: header;
+            background: var(--card-background);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .grid-map-container {
+            grid-area: main-grid;
+            position: relative; /* Needed for SVG overlay */
+        }
+
+        .controls-dashboard {
+            grid-area: controls;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .analytics-row {
+            grid-area: analytics;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+        }
+        
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 2px;
+            margin: 0 auto;
+            border-radius: 8px;
+            max-width: 380px;
+            width: 100%;
+        }
+
+        .cell {
+            aspect-ratio: 1;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            position: relative;
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+        }
+
+        .cell:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        .cell.obstacle { background: #2d3748; color: white; }
+        .cell.goal { background: var(--accent-green); color: white; }
+        .cell.start { background: var(--accent-primary); color: white; }
+
+        .policy-arrow {
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0.3;
+            color: var(--text-primary);
+        }
+        
+        .agent {
+            width: 70%;
+            height: 70%;
+            background: var(--accent-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            z-index: 100;
+            pointer-events: none;
+            box-shadow: 0 0 10px var(--accent-red);
+        }
+
+        #path-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicks to go through to the grid */
+            z-index: 50; /* Positioned between cells and agent */
+            overflow: visible;
+        }
+        
+        .agent-path {
+            fill: none;
+            stroke-width: 8px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.4));
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .button-row { display: flex; gap: 0.5rem; }
+
+        .btn {
+            flex-grow: 1;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.8rem;
+            background-color: var(--accent-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: var(--accent-primary-hover);
+        }
+        
+        .btn-secondary { background-color: #a0aec0; }
+        .btn-secondary:hover { background-color: #718096; }
+        .btn-green { background-color: var(--accent-green); }
+        .btn-green:hover { background-color: #38a169; }
+
+        .info-panel { background: #edf2f7; border-radius: 8px; padding: 0.875rem; font-size: 0.8rem; }
+        .info-panel ul { list-style-position: inside; padding-left: 0; }
+        .info-panel li { margin-bottom: 0.4rem; color: var(--text-secondary); }
+        .info-panel code { background: #e2e8f0; border-radius: 4px; padding: 2px 4px; font-weight: 600; color: var(--text-primary); }
+
+        .heatmap { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; border-radius: 8px; }
+        .heatmap-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--text-primary);
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.7);
+        }
+        .heatmap-cell.light-text { color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); }
+        
+        .stats-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+        .stat-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+        .stat-label { color: var(--text-secondary); }
+        .stat-value { font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 0.4rem; }
+        .convergence-indicator { 
+            width: 10px; 
+            height: 10px; 
+            border-radius: 50%; 
+            display: inline-block;
+            margin-left: 8px;
+            animation: pulse 2s infinite;
+        }
+        .convergence-indicator.converged { 
+            background: var(--accent-green); 
+            animation: none;
+        }
+        .convergence-indicator.learning { 
+            background: #f6e05e; 
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 1024px) {
+            .page-container {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "main-grid"
+                    "controls"
+                    "analytics";
+            }
+             .analytics-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .demo-control-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #f8f9fa;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.2rem;
+        }
+
+        .demo-control-btn:hover {
+            background: #e9ecef;
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .fullscreen-mode {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 9999;
+            background: var(--background-color);
+            padding: 1rem;
+            max-width: none !important;
+            margin: 0 !important;
+        }
+
+        .fullscreen-mode .header {
+            margin-bottom: 1rem;
+        }
+
+        .fullscreen-mode .page-container {
+            height: calc(100vh - 1.5rem);
+            grid-template-rows: auto 1fr auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="header">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                    <h1>REINFORCE Policy Gradient</h1>
+                    <p>Visualizing Policy Gradients, Stochastic Policies, and Learning through Episodes</p>
+                </div>
+                <div class="demo-controls">
+                    <button id="maximize-btn" class="demo-control-btn" onclick="toggleFullscreen()" title="Maximize">
+                        <span>⛶</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-map-container card">
+            <h2 class="card-title">Environment, Policy & Learning Episodes</h2>
+            <div style="position: relative;">
+                <svg id="path-overlay"></svg>
+                <div class="grid" id="grid"></div>
+            </div>
+            <div class="info-panel">
+                <ul>
+                    <li>Click a cell to cycle: <code>Empty</code> &rarr; <code>Obstacle</code> &rarr; <code>Goal</code> &rarr; <code>Start</code>.</li>
+                    <li>Right-click a cell to reset it to <code>Empty</code>.</li>
+                    <li><strong>Dashed orange/red paths:</strong> Learning episode trajectories (exploration).</li>
+                    <li><strong>Solid blue/green paths:</strong> Manual agent movement (exploitation).</li>
+                    <li><strong>Greedy</strong> movement follows the most probable action (exploitation).</li>
+                    <li><strong>Sample</strong> movement samples from the full policy distribution (exploration).</li>
+                    <li>Arrow opacity indicates policy confidence - brighter arrows mean more confident decisions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="controls-dashboard">
+            <div class="card">
+                <h2 class="card-title">Environment Controls</h2>
+                <div class="button-row">
+                   <button class="btn btn-green" onclick="randomizeEnvironment()" title="Generate a random environment layout">Random <span>&#x1F3B2;</span></button>
+                   <button class="btn btn-secondary" onclick="resetEnvironment()" title="Reset to default environment">Reset <span>&#x21BA;</span></button>
+                </div>
+                <div class="button-row" style="margin-top: 0.75rem;">
+                   <button class="btn" id="det-btn" onclick="setDeterministic()" title="Actions always succeed (deterministic transitions)">Deterministic</button>
+                   <button class="btn btn-secondary" id="stoch-btn" onclick="setStochastic()" title="Actions may fail with some probability">Stochastic</button>
+                </div>
+                <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.3;">
+                    <strong>Mode:</strong> <span id="env-mode">Deterministic</span>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="card-title">Learning Controls</h2>
+                <div class="controls">
+                    <div class="button-row">
+                       <button class="btn" onclick="stepLearning(1)" title="Run one learning episode">Learn <span>&times;1</span></button>
+                       <button class="btn" onclick="stepLearning(10)" title="Run ten learning episodes">Learn <span>&times;10</span></button>
+                    </div>
+                    <div class="button-row" style="margin-top: 0.75rem;">
+                       <button class="btn btn-green" id="continuous-learning-btn" onclick="toggleContinuousLearning()" title="Toggle continuous learning mode">Start Continuous</button>
+                    </div>
+                    <div class="button-row" style="margin-top: 0.5rem;">
+                       <button class="btn btn-green" id="learning-paths-btn" onclick="toggleLearningPaths()" title="Show/hide learning episode trajectories">Learning Paths: ON</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="card-title">Agent Controls</h2>
+                <div class="controls">
+                     <div class="button-row">
+                       <button class="btn" onclick="moveAgent(1)" title="Move agent using greedy policy (most probable action)">Greedy <span>&times;1</span></button>
+                       <button class="btn" onclick="moveAgent(10)" title="Move agent 10 steps using greedy policy">Greedy <span>&times;10</span></button>
+                    </div>
+                    <div class="button-row" style="margin-top: 0.5rem;">
+                       <button class="btn btn-green" onclick="moveAgentStochastic(1)" title="Move agent by sampling from policy distribution">Sample <span>&times;1</span></button>
+                       <button class="btn btn-green" onclick="moveAgentStochastic(10)" title="Move agent 10 steps by sampling from policy">Sample <span>&times;10</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="card-title">Analysis & Stats</h2>
+                 <div class="stats-panel">
+                     <div class="stat-item">
+                        <span class="stat-label">Episodes:</span>
+                        <span class="stat-value" id="iterations">0</span>
+                    </div>
+                     <div class="stat-item">
+                        <span class="stat-label">Avg Return:</span>
+                        <span class="stat-value" id="max-change" title="Average return over recent episodes">0.000</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Status:</span>
+                        <span class="stat-value" id="converged">Learning<span class="convergence-indicator learning"></span></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Agent Position:</span>
+                        <span class="stat-value" id="agent-pos">(0, 0)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Episode Steps:</span>
+                        <span class="stat-value" id="episode-steps">0</span>
+                    </div>
+                     <div class="stat-item">
+                        <span class="stat-label">Learning Rate (α):</span>
+                        <span class="stat-value">0.01</span>
+                    </div>
+                 </div>
+            </div>
+        </div>
+
+        <div class="analytics-row">
+            <div class="card">
+                 <h2 class="card-title">Policy Confidence</h2>
+                 <div class="heatmap" id="values-heatmap"></div>
+            </div>
+             <div class="card">
+                 <h2 class="card-title">Reward Function</h2>
+                 <div class="heatmap" id="rewards-heatmap"></div>
+            </div>
+            <div class="card">
+                 <h2 class="card-title">Policy Distribution</h2>
+                 <div class="heatmap" id="stationary-heatmap"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        console.log("Script starting...");
+        
+        class GridWorld {
+            constructor(size = 10) {
+                console.log("GridWorld constructor starting...");
+                this.size = size;
+                this.gamma = 0.9;
+                this.learningRate = 0.01;
+                this.actions = [[-1, 0], [1, 0], [0, -1], [0, 1]]; // Up, Down, Left, Right
+                this.actionSymbols = ['↑', '↓', '←', '→'];
+                this.isStochastic = false; 
+                this.slipProbability = 0.1;
+                this.maxEpisodeLength = 100;
+                
+                this.pathHistory = [];
+                this.currentPath = [];
+                this.learningTrajectories = []; // Store recent learning episode paths
+                this.showLearningPaths = true; // Toggle for showing learning paths
+                this.episodeHistory = [];
+                this.episodeCount = 0;
+                this.totalReturn = 0;
+                this.averageReturn = 0;
+                
+                // Continuous learning state
+                this.continuousLearning = false;
+                this.continuousLearningInterval = null;
+                
+                // Initialize agent position
+                this.agentPos = [0, 0];
+                this.episodeSteps = 0;
+                
+                // Initialize grid and rewards first
+                this.grid = new Array(this.size).fill(0).map(() => new Array(this.size).fill(0));
+                this.rewards = new Array(this.size).fill(0).map(() => new Array(this.size).fill(-0.1));
+                
+                // Initialize policy parameters
+                this.initializePolicyParams();
+                
+                // Initialize stationary distribution
+                this.stationaryDist = new Array(this.size).fill(0).map(() => new Array(this.size).fill(0));
+                 // Set up environment
+                this.resetEnvironment();
+                console.log("GridWorld constructor completed successfully");
+            }
+
+            // --- Environment Setup ---
+            resetEnvironment() {
+                // Reset grid and rewards
+                this.grid.forEach(row => row.fill(0));
+                this.rewards.forEach(row => row.fill(-0.1));
+                
+                // Set start and goal
+                this.setCell(0, 0, 3);
+                this.setCell(this.size - 1, this.size - 1, 2);
+                
+                // Reset agent position
+                this.agentPos = [0, 0];
+                this.episodeSteps = 0;
+                this.currentPath = [[0, 0]];
+                
+                // Reset learning state (but don't call full resetLearning to avoid recursion)
+                this.episodeHistory = [];
+                this.learningTrajectories = [];
+                this.pathHistory = [];
+                this.episodeCount = 0;
+                this.totalReturn = 0;
+                this.averageReturn = 0;
+                
+                this.computeStationaryDistribution();
+            }
+            
+            randomizeEnvironment() {
+                let isSolvable = false;
+                while (!isSolvable) {
+                    this.grid.forEach(row => row.fill(0));
+                    this.rewards.forEach(row => row.fill(-0.1));
+
+                    const startPos = [Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)];
+                    const goalPos = [this.size - 1 - Math.floor(Math.random() * 3), this.size - 1 - Math.floor(Math.random() * 3)];
+                    
+                    this.setCell(startPos[0], startPos[1], 3);
+                    this.setCell(goalPos[0], goalPos[1], 2);
+
+                    const obstacleCount = Math.floor(this.size * this.size * 0.2);
+                    for (let i = 0; i < obstacleCount; i++) {
+                        const r = Math.floor(Math.random() * this.size);
+                        const c = Math.floor(Math.random() * this.size);
+                        if (this.grid[r][c] === 0) {
+                            this.setCell(r, c, 1);
+                        }
+                    }
+                    isSolvable = this.isSolvable();
+                }
+                this.resetLearning();
+            }
+
+            isSolvable() {
+                let startNode;
+                for (let r = 0; r < this.size; r++) for (let c = 0; c < this.size; c++) if (this.grid[r][c] === 3) startNode = [r,c];
+                if(!startNode) return false;
+
+                const q = [startNode];
+                const visited = new Set([`${startNode[0]},${startNode[1]}`]);
+
+                while (q.length > 0) {
+                    const [r, c] = q.shift();
+                    if (this.grid[r][c] === 2) return true; // Found goal
+
+                    for (const action of this.actions) {
+                        const [nextR, nextC] = this.getNextState([r, c], action);
+                         // Check if next state is valid and not an obstacle before adding
+                        if (this.isValidPosition(nextR, nextC) && !visited.has(`${nextR},${nextC}`)) {
+                            visited.add(`${nextR},${nextC}`);
+                            q.push([nextR, nextC]);
+                        }
+                    }
+                }
+                return false; // Goal not reachable
+            }
+
+
+            setCell(row, col, cellType) {
+                if (cellType === 3) { // If setting a new start cell
+                    // Find and remove the old start cell
+                    for (let r = 0; r < this.size; r++) {
+                        for (let c = 0; c < this.size; c++) {
+                            if (this.grid[r][c] === 3) {
+                                this.grid[r][c] = 0; // Set old start to empty
+                            }
+                        }
+                    }
+                    this.agentPos = [row, col];
+                }
+                
+                this.grid[row][col] = cellType;
+                
+                // Update rewards based on cell type
+                switch (cellType) {
+                    case 0: case 3: this.rewards[row][col] = -0.1; break; // Empty or Start
+                    case 1: this.rewards[row][col] = -10.0; break; // Obstacle
+                    case 2: this.rewards[row][col] = 10.0; break;  // Goal
+                }
+            }
+            
+            isValidPosition(row, col) {
+                return row >= 0 && row < this.size && col >= 0 && col < this.size && this.grid[row][col] !== 1;
+            }
+
+            getNextState(state, action) {
+                const [row, col] = state;
+                const [dr, dc] = action;
+                const newRow = row + dr;
+                const newCol = col + dc;
+                
+                if (this.isValidPosition(newRow, newCol)) return [newRow, newCol];
+                return state; // Bump into wall, stay in the same state
+            }
+
+            getLeftAction(actionIndex) { const leftMap = { 0: 2, 1: 3, 2: 1, 3: 0 }; return leftMap[actionIndex]; }
+            getRightAction(actionIndex) { const rightMap = { 0: 3, 1: 2, 2: 0, 3: 1 }; return rightMap[actionIndex]; }
+
+            getTransitionProbabilities(state, actionIndex) {
+                if (!this.isStochastic) {
+                    const nextState = this.getNextState(state, this.actions[actionIndex]);
+                    return [{ state: nextState, probability: 1.0 }];
+                }
+
+                const transitions = [];
+                const intendedProb = 1.0 - 2 * this.slipProbability;
+                
+                const intendedNext = this.getNextState(state, this.actions[actionIndex]);
+                transitions.push({ state: intendedNext, probability: intendedProb });
+                
+                const leftActionIdx = this.getLeftAction(actionIndex);
+                const leftNext = this.getNextState(state, this.actions[leftActionIdx]);
+                transitions.push({ state: leftNext, probability: this.slipProbability });
+                
+                const rightActionIdx = this.getRightAction(actionIndex);
+                const rightNext = this.getNextState(state, this.actions[rightActionIdx]);
+                transitions.push({ state: rightNext, probability: this.slipProbability });
+                
+                return transitions;
+            }
+
+            sampleNextState(state, actionIndex) {
+                const transitions = this.getTransitionProbabilities(state, actionIndex);
+                const rand = Math.random();
+                let cumProb = 0;
+                
+                for (const transition of transitions) {
+                    cumProb += transition.probability;
+                    if (rand <= cumProb) return transition.state;
+                }
+                return transitions[0].state;
+            }
+
+            setStochastic(isStochastic) {
+                this.isStochastic = isStochastic;
+                this.resetLearning();
+            }
+            
+            // REINFORCE Policy Gradient Methods
+            initializePolicyParams() {
+                this.policyParams = new Array(this.size).fill(0).map(() => 
+                    new Array(this.size).fill(0).map(() => 
+                        new Array(4).fill(0).map(() => Math.random() * 0.1 - 0.05) // Small random initialization
+                    )
+                );
+            }
+            
+            computeActionProbabilities(state) {
+                const [row, col] = state;
+                if (this.grid[row][col] === 1 || this.grid[row][col] === 2) {
+                    return [0.25, 0.25, 0.25, 0.25]; // Uniform for obstacles/goals (not used)
+                }
+                
+                const params = this.policyParams[row][col];
+                const maxParam = Math.max(...params);
+                const expParams = params.map(p => Math.exp(p - maxParam)); // Numerical stability
+                const sumExp = expParams.reduce((sum, exp) => sum + exp, 0);
+                return expParams.map(exp => exp / sumExp);
+            }
+            
+            sampleAction(state) {
+                const probs = this.computeActionProbabilities(state);
+                const rand = Math.random();
+                let cumProb = 0;
+                
+                for (let i = 0; i < probs.length; i++) {
+                    cumProb += probs[i];
+                    if (rand <= cumProb) return i;
+                }
+                return probs.length - 1; // Fallback
+            }
+            
+            getPreferredAction(state) {
+                const probs = this.computeActionProbabilities(state);
+                return probs.indexOf(Math.max(...probs));
+            }
+            
+            runEpisode() {
+                const episode = [];
+                const trajectory = []; // Store path for visualization
+                let currentState = [...this.getStartPosition()];
+                trajectory.push([...currentState]); // Add start position
+                let steps = 0;
+                
+                while (steps < this.maxEpisodeLength) {
+                    const [row, col] = currentState;
+                    
+                    // Check if reached goal or obstacle
+                    if (this.grid[row][col] === 2) break; // Goal reached
+                    if (this.grid[row][col] === 1) break; // Hit obstacle (shouldn't happen in normal flow)
+                    
+                    // Sample action according to current policy
+                    const actionIndex = this.sampleAction(currentState);
+                    const nextState = this.sampleNextState(currentState, actionIndex);
+                    const reward = this.rewards[nextState[0]][nextState[1]];
+                    
+                    episode.push({
+                        state: [...currentState],
+                        action: actionIndex,
+                        reward: reward,
+                        nextState: [...nextState]
+                    });
+                    
+                    currentState = nextState;
+                    trajectory.push([...nextState]); // Add next position to trajectory
+                    steps++;
+                }
+                
+                // Store trajectory for visualization
+                if (trajectory.length > 1) {
+                    this.learningTrajectories.push([...trajectory]);
+                    // Keep only recent learning trajectories (last 8)
+                    if (this.learningTrajectories.length > 8) {
+                        this.learningTrajectories.shift();
+                    }
+                }
+                
+                return episode;
+            }
+            
+            computeReturns(episode) {
+                const returns = new Array(episode.length);
+                let G = 0;
+                
+                // Compute returns in reverse order
+                for (let t = episode.length - 1; t >= 0; t--) {
+                    G = episode[t].reward + this.gamma * G;
+                    returns[t] = G;
+                }
+                
+                return returns;
+            }
+            
+            updatePolicyGradient(episode, returns) {
+                for (let t = 0; t < episode.length; t++) {
+                    const { state, action } = episode[t];
+                    const [row, col] = state;
+                    const G = returns[t];
+                    
+                    // Skip if obstacle or goal
+                    if (this.grid[row][col] === 1 || this.grid[row][col] === 2) continue;
+                    
+                    const actionProbs = this.computeActionProbabilities(state);
+                    
+                    // Policy gradient update: ∇log π(a|s) = e_a - π(a|s)
+                    // where e_a is one-hot vector for taken action
+                    for (let a = 0; a < 4; a++) {
+                        const gradient = (a === action ? 1 : 0) - actionProbs[a];
+                        this.policyParams[row][col][a] += this.learningRate * G * gradient;
+                    }
+                }
+            }
+            
+            stepLearning(numEpisodes = 1) {
+                for (let i = 0; i < numEpisodes; i++) {
+                    const episode = this.runEpisode();
+                    const returns = this.computeReturns(episode);
+                    
+                    // Update policy parameters
+                    this.updatePolicyGradient(episode, returns);
+                    
+                    // Update statistics
+                    this.episodeCount++;
+                    const episodeReturn = returns.length > 0 ? returns[0] : 0;
+                    this.totalReturn += episodeReturn;
+                    this.averageReturn = this.totalReturn / this.episodeCount;
+                    
+                    // Store episode for analysis
+                    this.episodeHistory.push({
+                        episode: episode,
+                        returns: returns,
+                        totalReturn: episodeReturn
+                    });
+                    
+                    // Keep only recent episodes
+                    if (this.episodeHistory.length > 100) {
+                        this.episodeHistory.shift();
+                    }
+                }
+                
+                this.computeStationaryDistribution();
+            }
+            
+            startContinuousLearning() {
+                if (this.continuousLearning) return; // Already running
+                
+                this.continuousLearning = true;
+                this.continuousLearningInterval = setInterval(() => {
+                    this.stepLearning(1);
+                    render(); // Update display
+                }, 200); // Run every 200ms
+            }
+            
+            stopContinuousLearning() {
+                if (!this.continuousLearning) return; // Not running
+                
+                this.continuousLearning = false;
+                if (this.continuousLearningInterval) {
+                    clearInterval(this.continuousLearningInterval);
+                    this.continuousLearningInterval = null;
+                }
+            }
+            
+            toggleContinuousLearning() {
+                if (this.continuousLearning) {
+                    this.stopContinuousLearning();
+                } else {
+                    this.startContinuousLearning();
+                }
+            }
+            
+            getStartPosition() {
+                for (let r = 0; r < this.size; r++) {
+                    for (let c = 0; c < this.size; c++) {
+                        if (this.grid[r][c] === 3) return [r, c];
+                    }
+                }
+                return [0, 0]; // Fallback
+            }
+            
+            resetLearning() {
+                // Stop continuous learning if active
+                this.stopContinuousLearning();
+                
+                this.initializePolicyParams();
+                this.stationaryDist = new Array(this.size).fill(0).map(() => new Array(this.size).fill(0));
+                this.episodeHistory = [];
+                this.learningTrajectories = []; // Clear learning trajectories
+                this.episodeCount = 0;
+                this.totalReturn = 0;
+                this.averageReturn = 0;
+                
+                // Clear path history but keep current path
+                this.pathHistory = [];
+                this.resetAgent();
+                this.computeStationaryDistribution();
+            }
+            
+            computeStationaryDistribution() {
+                const dist = new Array(this.size).fill(0).map(() => new Array(this.size).fill(0));
+                let totalProb = 0;
+                
+                for (let r = 0; r < this.size; r++) {
+                    for (let c = 0; c < this.size; c++) {
+                        if (this.isValidPosition(r,c)) {
+                            // Use action probabilities to estimate state visitation
+                            const actionProbs = this.computeActionProbabilities([r, c]);
+                            const maxProb = Math.max(...actionProbs);
+                            dist[r][c] = maxProb; // Higher if policy is more confident
+                            totalProb += dist[r][c];
+                        }
+                    }
+                }
+                
+                if (totalProb > 0) {
+                    for (let r = 0; r < this.size; r++) {
+                        for (let c = 0; c < this.size; c++) {
+                            this.stationaryDist[r][c] = dist[r][c] / totalProb;
+                        }
+                    }
+                }
+            }
+
+            moveAgent(steps = 1) {
+                for (let i = 0; i < steps; i++) {
+                    const [row, col] = this.agentPos;
+                    if (this.grid[row][col] === 2 || this.grid[row][col] === 1) break;
+                    
+                    // Use greedy action (most probable) for manual agent control
+                    const actionIndex = this.getPreferredAction(this.agentPos);
+                    const newPos = this.sampleNextState(this.agentPos, actionIndex);
+                    
+                    // Only add to path if the position actually changed
+                    if (newPos[0] !== this.agentPos[0] || newPos[1] !== this.agentPos[1]) {
+                        this.agentPos = newPos;
+                        this.currentPath.push([...this.agentPos]); // Add new position to current path
+                        this.episodeSteps++;
+                    }
+                    
+                    if (this.grid[this.agentPos[0]][this.agentPos[1]] === 2) {
+                        // Reached goal - reset after a delay
+                        setTimeout(() => {
+                           resetAgent(); // Use global reset which calls class method and renders
+                        }, 500);
+                        break;
+                    }
+                }
+            }
+            
+            moveAgentStochastic(steps = 1) {
+                for (let i = 0; i < steps; i++) {
+                    const [row, col] = this.agentPos;
+                    if (this.grid[row][col] === 2 || this.grid[row][col] === 1) break;
+                    
+                    // Sample action stochastically from current policy
+                    const actionIndex = this.sampleAction(this.agentPos);
+                    const newPos = this.sampleNextState(this.agentPos, actionIndex);
+                    
+                    // Only add to path if the position actually changed
+                    if (newPos[0] !== this.agentPos[0] || newPos[1] !== this.agentPos[1]) {
+                        this.agentPos = newPos;
+                        this.currentPath.push([...this.agentPos]); // Add new position to current path
+                        this.episodeSteps++;
+                    }
+                    
+                    if (this.grid[this.agentPos[0]][this.agentPos[1]] === 2) {
+                        // Reached goal - reset after a delay
+                        setTimeout(() => {
+                           resetAgent(); // Use global reset which calls class method and renders
+                        }, 500);
+                        break;
+                    }
+                }
+            }
+            
+            resetAgent() {
+                // Store the completed path in history before resetting
+                if (this.currentPath && this.currentPath.length > 1) {
+                    this.pathHistory.push([...this.currentPath]);
+                    if (this.pathHistory.length > 8) { // Keep only last 8 paths
+                        this.pathHistory.shift();
+                    }
+                }
+
+                // Find start position and reset agent
+                for (let r = 0; r < this.size; r++) {
+                    for (let c = 0; c < this.size; c++) {
+                        if (this.grid[r][c] === 3) {
+                            this.agentPos = [r, c];
+                            this.episodeSteps = 0;
+                            this.currentPath = [[r, c]]; // Start a new path with initial position
+                            return;
+                        }
+                    }
+                }
+                // Fallback if no start position is found
+                this.agentPos = [0, 0]; 
+                this.episodeSteps = 0;
+                this.currentPath = [[0, 0]];
+            }
+            
+            getNextCellType(row, col) { return (this.grid[row][col] + 1) % 4; }
+        }
+        
+        console.log("Creating GridWorld instance...");
+        const game = new GridWorld();
+        console.log("GridWorld instance created successfully");
+        
+        // --- Color Helpers & Rendering ---
+        function getValueColor(v, min, max) { return v > 0 ? `rgba(72, 187, 120, ${Math.min(1, v / (max + 1e-6)) * 0.8 + 0.2})` : `rgba(245, 101, 101, ${Math.min(1, v / (min - 1e-6)) * 0.8 + 0.2})`; }
+        function getRewardColor(r) { return r === 10 ? 'var(--accent-green)' : (r === -10 ? 'var(--text-primary)' : '#f7fafc'); }
+        function getDistColor(d, max) { return max === 0 ? '#e2e8f0' : `rgba(66, 153, 225, ${Math.min(1, d / max) * 0.9 + 0.1})`; }
+        
+        function renderGrid() {
+            const gridEl = document.getElementById('grid');
+            gridEl.innerHTML = '';
+            for (let r = 0; r < game.size; r++) for (let c = 0; c < game.size; c++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                const type = game.grid[r][c];
+                if (type === 1) cell.classList.add('obstacle'); else if (type === 2) cell.classList.add('goal'); else if (type === 3) cell.classList.add('start');
+                
+                if (type !== 1 && type !== 2) {
+                    const arrow = document.createElement('span');
+                    arrow.className = 'policy-arrow';
+                    const preferredAction = game.getPreferredAction([r, c]);
+                    arrow.textContent = game.actionSymbols[preferredAction];
+                    
+                    // Make arrow opacity reflect policy confidence
+                    const actionProbs = game.computeActionProbabilities([r, c]);
+                    const maxProb = Math.max(...actionProbs);
+                    arrow.style.opacity = 0.3 + maxProb * 0.7; // More opaque for confident policies
+                    
+                    cell.appendChild(arrow);
+                }
+                if (game.agentPos[0] === r && game.agentPos[1] === c) {
+                    const agent = document.createElement('div');
+                    agent.className = 'agent';
+                    agent.textContent = '🤖';
+                    cell.appendChild(agent);
+                }
+                cell.addEventListener('click', () => { game.setCell(r, c, game.getNextCellType(r, c)); game.resetLearning(); render(); });
+                cell.addEventListener('contextmenu', (e) => { e.preventDefault(); game.setCell(r, c, 0); game.resetLearning(); render(); });
+                gridEl.appendChild(cell);
+            }
+        }
+
+        function renderPaths() {
+            const svg = document.getElementById('path-overlay');
+            const gridEl = document.getElementById('grid');
+            svg.innerHTML = ''; // Clear previous paths
+            
+            if (!gridEl.offsetWidth || !gridEl.offsetHeight) return;
+            
+            // Set SVG dimensions to match the grid
+            svg.setAttribute('width', gridEl.offsetWidth);
+            svg.setAttribute('height', gridEl.offsetHeight);
+            svg.setAttribute('viewBox', `0 0 ${gridEl.offsetWidth} ${gridEl.offsetHeight}`);
+            
+            const cellWidth = gridEl.offsetWidth / game.size;
+            const cellHeight = gridEl.offsetHeight / game.size;
+
+            // Find start and goal positions for gradients
+            let startPos, goalPos;
+            for(let r=0; r<game.size; r++) for(let c=0; c<game.size; c++){
+                if(game.grid[r][c] === 3) startPos = [r,c];
+                if(game.grid[r][c] === 2) goalPos = [r,c];
+            }
+
+            if (!startPos || !goalPos) return;
+
+            // Create gradient definitions
+            const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+            
+            // Learning path gradient (orange to red for exploration)
+            const learningGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+            learningGradient.setAttribute('id', 'learningPathGradient');
+            learningGradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+            learningGradient.setAttribute('x1', (startPos[1] + 0.5) * cellWidth);
+            learningGradient.setAttribute('y1', (startPos[0] + 0.5) * cellHeight);
+            if (goalPos) {
+                learningGradient.setAttribute('x2', (goalPos[1] + 0.5) * cellWidth);
+                learningGradient.setAttribute('y2', (goalPos[0] + 0.5) * cellHeight);
+            }
+            
+            const learnStop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            learnStop1.setAttribute('offset', '0%');
+            learnStop1.setAttribute('stop-color', '#f6ad55'); // Orange
+            const learnStop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            learnStop2.setAttribute('offset', '100%');
+            learnStop2.setAttribute('stop-color', '#fc8181'); // Light red
+            
+            learningGradient.appendChild(learnStop1);
+            learningGradient.appendChild(learnStop2);
+            defs.appendChild(learningGradient);
+            
+            // Manual path gradient (current blue-to-green)
+            const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+            gradient.setAttribute('id', 'pathGradient');
+            gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+            gradient.setAttribute('x1', (startPos[1] + 0.5) * cellWidth);
+            gradient.setAttribute('y1', (startPos[0] + 0.5) * cellHeight);
+            if (goalPos) {
+                gradient.setAttribute('x2', (goalPos[1] + 0.5) * cellWidth);
+                gradient.setAttribute('y2', (goalPos[0] + 0.5) * cellHeight);
+            }
+            
+            const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            stop1.setAttribute('offset', '0%');
+            stop1.setAttribute('stop-color', '#4299e1');
+            const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            stop2.setAttribute('offset', '100%');
+            stop2.setAttribute('stop-color', '#48bb78');
+            
+            gradient.appendChild(stop1);
+            gradient.appendChild(stop2);
+            defs.appendChild(gradient);
+            
+            // Faded gradient for historical paths
+            const fadedGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+            fadedGradient.setAttribute('id', 'fadedPathGradient');
+            fadedGradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+            fadedGradient.setAttribute('x1', (startPos[1] + 0.5) * cellWidth);
+            fadedGradient.setAttribute('y1', (startPos[0] + 0.5) * cellHeight);
+            if (goalPos) {
+                fadedGradient.setAttribute('x2', (goalPos[1] + 0.5) * cellWidth);
+                fadedGradient.setAttribute('y2', (goalPos[0] + 0.5) * cellHeight);
+            }
+            
+            const fadeStop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            fadeStop1.setAttribute('offset', '0%');
+            fadeStop1.setAttribute('stop-color', '#a0aec0');
+            const fadeStop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            fadeStop2.setAttribute('offset', '100%');
+            fadeStop2.setAttribute('stop-color', '#cbd5e0');
+            
+            fadedGradient.appendChild(fadeStop1);
+            fadedGradient.appendChild(fadeStop2);
+            defs.appendChild(fadedGradient);
+            
+            svg.appendChild(defs);
+
+            // Function to create a smooth SVG path string
+            const createSmoothPath = (points) => {
+                if (points.length < 2) return '';
+                
+                let path = `M ${points[0][0]} ${points[0][1]}`;
+                
+                if (points.length === 2) {
+                    path += ` L ${points[1][0]} ${points[1][1]}`;
+                    return path;
+                }
+                
+                // Use quadratic curves for smoother paths
+                for (let i = 1; i < points.length; i++) {
+                    if (i === points.length - 1) {
+                        // Last point - use line
+                        path += ` L ${points[i][0]} ${points[i][1]}`;
+                    } else {
+                        // Use quadratic curve
+                        const midX = (points[i][0] + points[i + 1][0]) / 2;
+                        const midY = (points[i][1] + points[i + 1][1]) / 2;
+                        path += ` Q ${points[i][0]} ${points[i][1]} ${midX} ${midY}`;
+                    }
+                }
+                
+                return path;
+            };
+
+            const pointToPixel = (point) => [
+                (point[1] + 0.5) * cellWidth,
+                (point[0] + 0.5) * cellHeight
+            ];
+
+            // Render learning trajectories (if enabled)
+            if (game.showLearningPaths) {
+                game.learningTrajectories.forEach((trajectory, index) => {
+                    if (trajectory.length < 2) return;
+                    
+                    const opacity = 0.2 + 0.3 * (index / Math.max(1, game.learningTrajectories.length - 1));
+                    const pixelPoints = trajectory.map(pointToPixel);
+                    const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    pathEl.setAttribute('d', createSmoothPath(pixelPoints));
+                    pathEl.setAttribute('stroke', 'url(#learningPathGradient)');
+                    pathEl.setAttribute('stroke-opacity', opacity);
+                    pathEl.setAttribute('stroke-width', '5');
+                    pathEl.setAttribute('fill', 'none');
+                    pathEl.setAttribute('stroke-linecap', 'round');
+                    pathEl.setAttribute('stroke-linejoin', 'round');
+                    pathEl.setAttribute('stroke-dasharray', '5,3'); // Dashed for learning
+                    svg.appendChild(pathEl);
+                });
+            }
+
+            // Render historical manual paths (older paths are more faded)
+            game.pathHistory.forEach((path, index) => {
+                if (path.length < 2) return;
+                
+                const opacity = 0.15 + 0.25 * (index / Math.max(1, game.pathHistory.length - 1));
+                const pixelPoints = path.map(pointToPixel);
+                const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                pathEl.setAttribute('d', createSmoothPath(pixelPoints));
+                pathEl.setAttribute('stroke', 'url(#fadedPathGradient)');
+                pathEl.setAttribute('stroke-opacity', opacity);
+                pathEl.setAttribute('stroke-width', '7');
+                pathEl.setAttribute('fill', 'none');
+                pathEl.setAttribute('stroke-linecap', 'round');
+                pathEl.setAttribute('stroke-linejoin', 'round');
+                svg.appendChild(pathEl);
+            });
+
+            // Render current manual path with medium opacity and gradient effect
+            if (game.currentPath && game.currentPath.length > 1) {
+                const pixelPoints = game.currentPath.map(pointToPixel);
+                const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                pathEl.setAttribute('d', createSmoothPath(pixelPoints));
+                pathEl.setAttribute('stroke', 'url(#pathGradient)');
+                pathEl.setAttribute('stroke-opacity', '0.65');
+                pathEl.setAttribute('class', 'agent-path');
+                svg.appendChild(pathEl);
+            }
+        }
+        
+        function renderHeatmaps() {
+            const vH = document.getElementById('values-heatmap'), rH = document.getElementById('rewards-heatmap'), sH = document.getElementById('stationary-heatmap');
+            vH.innerHTML = rH.innerHTML = sH.innerHTML = '';
+            
+            // For policy parameters, show the max parameter value (policy strength)
+            const policyStrengths = [];
+            for (let r = 0; r < game.size; r++) {
+                for (let c = 0; c < game.size; c++) {
+                    if (game.grid[r][c] !== 1 && game.grid[r][c] !== 2) {
+                        const actionProbs = game.computeActionProbabilities([r, c]);
+                        const maxProb = Math.max(...actionProbs);
+                        policyStrengths.push(maxProb);
+                    }
+                }
+            }
+            const minP = Math.min(...policyStrengths), maxP = Math.max(...policyStrengths);
+            const maxD = Math.max(...game.stationaryDist.flat());
+
+            for (let r = 0; r < game.size; r++) for (let c = 0; c < game.size; c++) {
+                const vC = document.createElement('div'), rC = document.createElement('div'), sC = document.createElement('div');
+                vC.className = rC.className = sC.className = 'heatmap-cell';
+                
+                // Show policy confidence (max action probability)
+                if (game.grid[r][c] !== 1 && game.grid[r][c] !== 2) {
+                    const actionProbs = game.computeActionProbabilities([r, c]);
+                    const maxProb = Math.max(...actionProbs);
+                    const confidence = (maxProb - 0.25) / (1 - 0.25); // Normalize from random (0.25) to certain (1.0)
+                    vC.style.backgroundColor = `rgba(66, 153, 225, ${0.2 + confidence * 0.8})`;
+                    vC.textContent = (maxProb * 100).toFixed(0) + '%';
+                } else {
+                    vC.style.backgroundColor = '#e2e8f0';
+                    vC.textContent = '-';
+                }
+                vC.classList.add('light-text'); 
+                vH.appendChild(vC);
+
+                const rew = game.rewards[r][c];
+                rC.style.backgroundColor = getRewardColor(rew);
+                if(rew > 0 || rew < -1) rC.classList.add('light-text');
+                rC.textContent = rew.toFixed(1); rH.appendChild(rC);
+
+                const dist = game.stationaryDist[r][c];
+                sC.style.backgroundColor = getDistColor(dist, maxD);
+                sC.textContent = `${(dist * 100).toFixed(1)}%`; sC.classList.add('light-text'); sH.appendChild(sC);
+            }
+        }
+        
+        function renderStats() {
+            document.getElementById('iterations').textContent = game.episodeCount;
+            document.getElementById('max-change').textContent = game.averageReturn.toFixed(3);
+            const convEl = document.getElementById('converged'), indEl = convEl.querySelector('.convergence-indicator');
+            
+            // Show "Trained" instead of "Converged" for policy gradient
+            const isWellTrained = game.episodeCount > 50 && game.averageReturn > 5;
+            convEl.childNodes[0].nodeValue = isWellTrained ? 'Trained' : 'Learning';
+            indEl.className = `convergence-indicator ${isWellTrained ? 'converged' : 'learning'}`;
+            
+            document.getElementById('agent-pos').textContent = `(${game.agentPos[0]}, ${game.agentPos[1]})`;
+            document.getElementById('episode-steps').textContent = game.episodeSteps;
+        }
+        
+        function render() {
+            renderGrid();
+            renderPaths();
+            renderHeatmaps();
+            renderStats();
+        }
+        
+        // --- Global Control Functions ---
+        function stepLearning(episodes) { 
+            game.stepLearning(episodes); 
+            render(); 
+        }
+        function resetLearning() { 
+            game.resetLearning(); 
+            // Update continuous learning button state
+            const btn = document.getElementById('continuous-learning-btn');
+            btn.textContent = 'Start Continuous';
+            btn.className = 'btn btn-green';
+            render(); 
+        }
+        function moveAgent(steps) { game.moveAgent(steps); render(); }
+        function moveAgentStochastic(steps) { game.moveAgentStochastic(steps); render(); }
+        function resetAgent() { game.resetAgent(); render(); }
+        function resetEnvironment() { game.resetEnvironment(); render(); }
+        function randomizeEnvironment() { game.randomizeEnvironment(); render(); }
+        
+        function toggleContinuousLearning() {
+            game.toggleContinuousLearning();
+            const btn = document.getElementById('continuous-learning-btn');
+            if (game.continuousLearning) {
+                btn.textContent = 'Stop Continuous';
+                btn.className = 'btn btn-secondary';
+            } else {
+                btn.textContent = 'Start Continuous';
+                btn.className = 'btn btn-green';
+            }
+        }
+        
+        function toggleLearningPaths() {
+            game.showLearningPaths = !game.showLearningPaths;
+            const btn = document.getElementById('learning-paths-btn');
+            btn.textContent = `Learning Paths: ${game.showLearningPaths ? 'ON' : 'OFF'}`;
+            btn.className = game.showLearningPaths ? 'btn btn-green' : 'btn btn-secondary';
+            render();
+        }
+        
+        function setDeterministic() {
+            game.setStochastic(false);
+            updateEnvironmentModeUI();
+            render();
+        }
+        
+        function setStochastic() {
+            game.setStochastic(true);
+            updateEnvironmentModeUI();
+            render();
+        }
+        
+        function updateEnvironmentModeUI() {
+            const detBtn = document.getElementById('det-btn');
+            const stochBtn = document.getElementById('stoch-btn');
+            const modeText = document.getElementById('env-mode');
+            
+            if (game.isStochastic) {
+                detBtn.className = 'btn btn-secondary';
+                stochBtn.className = 'btn';
+                modeText.textContent = 'Stochastic (80% intended, 20% slip)';
+            } else {
+                detBtn.className = 'btn';
+                stochBtn.className = 'btn btn-secondary';
+                modeText.textContent = 'Deterministic (actions always succeed)';
+            }
+        }
+        
+        function toggleFullscreen() {
+            const body = document.body;
+            const btn = document.getElementById('maximize-btn');
+            const btnSpan = btn.querySelector('span');
+            
+            if (body.classList.contains('fullscreen-mode')) {
+                // Exit fullscreen
+                body.classList.remove('fullscreen-mode');
+                btnSpan.textContent = '⛶'; // Maximize icon
+                btn.title = 'Maximize';
+            } else {
+                // Enter fullscreen
+                body.classList.add('fullscreen-mode');
+                btnSpan.textContent = '⛉'; // Minimize icon
+                btn.title = 'Minimize';
+            }
+            
+            // Re-render to adjust to new dimensions
+            setTimeout(() => {
+                render();
+                renderPaths();
+            }, 100);
+        }
+        
+        // Exit fullscreen on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.body.classList.contains('fullscreen-mode')) {
+                toggleFullscreen();
+            }
+        });
+
+        // Initial render
+        render();
+        updateEnvironmentModeUI();
+
+        // Re-render paths on window resize to keep them aligned
+        window.addEventListener('resize', () => {
+            setTimeout(renderPaths, 100); // Small delay to ensure grid is resized
+        });
+        
+        // Force initial path setup
+        setTimeout(() => {
+            if (game.currentPath.length === 0) {
+                game.resetAgent();
+                render();
+            }
+        }, 100);
+    </script>
+</body>
+</html>

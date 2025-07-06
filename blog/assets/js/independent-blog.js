@@ -124,20 +124,20 @@ class IndependentBlogManager {
       },
       {
         id: 7,
-        title: "Policy Gradient Neural Networks: Interactive Learning Demo",
+        title: "REINFORCE Policy Gradient: Interactive Grid World Demo",
         slug: "policy-gradient-demo",
         category: "rl-ai",
         categoryName: "Reinforcement Learning & AI",
-        excerpt: "Dive into policy gradient algorithms through an interactive neural network demonstration featuring real-time training, boundary avoidance learning, and comparison with classical PID control.",
+        excerpt: "Explore policy gradient algorithms through an interactive grid world demonstration featuring REINFORCE learning, stochastic policies, and real-time trajectory visualization.",
         content: "",
         author: "Sapan Agrawal",
         date: "2025-07-03",
         readTime: "8 min read",
-        tags: ["Policy Gradients", "Neural Networks", "Interactive Demo", "REINFORCE", "PID Control"],
+        tags: ["Policy Gradients", "REINFORCE", "Interactive Demo", "Grid World", "Stochastic Policy"],
         image: "/blog/assets/images/policy-gradient-demo-thumbnail.jpg",
         featured: true,
         demo: true,
-        demoUrl: "/demos/policy_gradient_fixed.html"
+        demoUrl: "/demos/policy_gradient.html"
       },
       {
         id: 8,
